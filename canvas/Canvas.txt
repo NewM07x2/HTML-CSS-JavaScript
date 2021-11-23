@@ -1,0 +1,7 @@
+Canvasについて
+htmlを作成
+index .html
+css js
+を用意。
+
+Canvas要素を配置してやる必要がある。

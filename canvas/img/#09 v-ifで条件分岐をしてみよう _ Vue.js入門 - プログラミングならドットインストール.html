@@ -1,0 +1,1975 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)https://dotinstall.com/lessons/basic_vuejs_v2/43909 -->
+<html lang="ja" class="style-version-2 " id="page_id_lesson_show"><script type="text/javascript" async="" src="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/usergram.js"></script><script type="text/javascript" async="" src="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/bi.js"></script><script async="" src="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/analytics.js"></script><script type="text/javascript">window["_gaUserPrefs"] = { ioo : function() { return true; } }</script><head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>    .error_widget_wrapper {        background: inherit;        color: inherit;        border:none    }    .error_widget {        border-top: solid 2px;        border-bottom: solid 2px;        margin: 5px 0;        padding: 10px 40px;        white-space: pre-wrap;    }    .error_widget.ace_error, .error_widget_arrow.ace_error{        border-color: #ff5a5a    }    .error_widget.ace_warning, .error_widget_arrow.ace_warning{        border-color: #F1D817    }    .error_widget.ace_info, .error_widget_arrow.ace_info{        border-color: #5a5a5a    }    .error_widget.ace_ok, .error_widget_arrow.ace_ok{        border-color: #5aaa5a    }    .error_widget_arrow {        position: absolute;        border: solid 5px;        border-top-color: transparent!important;        border-right-color: transparent!important;        border-left-color: transparent!important;        top: -5px;    }</style><style id="ace-tm">.ace-tm .ace_gutter {background: #f0f0f0;color: #333;}.ace-tm .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-tm .ace_fold {background-color: #6B72E6;}.ace-tm {background-color: #FFFFFF;color: black;}.ace-tm .ace_cursor {color: black;}.ace-tm .ace_invisible {color: rgb(191, 191, 191);}.ace-tm .ace_storage,.ace-tm .ace_keyword {color: blue;}.ace-tm .ace_constant {color: rgb(197, 6, 11);}.ace-tm .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-tm .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-tm .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-tm .ace_invalid {background-color: rgba(255, 0, 0, 0.1);color: red;}.ace-tm .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-tm .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-tm .ace_support.ace_type,.ace-tm .ace_support.ace_class {color: rgb(109, 121, 222);}.ace-tm .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-tm .ace_string {color: rgb(3, 106, 7);}.ace-tm .ace_comment {color: rgb(76, 136, 107);}.ace-tm .ace_comment.ace_doc {color: rgb(0, 102, 255);}.ace-tm .ace_comment.ace_doc.ace_tag {color: rgb(128, 159, 191);}.ace-tm .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-tm .ace_variable {color: rgb(49, 132, 149);}.ace-tm .ace_xml-pe {color: rgb(104, 104, 91);}.ace-tm .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-tm .ace_heading {color: rgb(12, 7, 255);}.ace-tm .ace_list {color:rgb(185, 6, 144);}.ace-tm .ace_meta.ace_tag {color:rgb(0, 22, 142);}.ace-tm .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-tm .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-tm.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px white;}.ace-tm .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-tm .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-tm .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-tm .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-tm .ace_gutter-active-line {background-color : #dcdcdc;}.ace-tm .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-tm .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}
+/*# sourceURL=ace/css/ace-tm */</style><style id="ace_editor.css">.ace_br1 {border-top-left-radius    : 3px;}.ace_br2 {border-top-right-radius   : 3px;}.ace_br3 {border-top-left-radius    : 3px; border-top-right-radius:    3px;}.ace_br4 {border-bottom-right-radius: 3px;}.ace_br5 {border-top-left-radius    : 3px; border-bottom-right-radius: 3px;}.ace_br6 {border-top-right-radius   : 3px; border-bottom-right-radius: 3px;}.ace_br7 {border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px;}.ace_br8 {border-bottom-left-radius : 3px;}.ace_br9 {border-top-left-radius    : 3px; border-bottom-left-radius:  3px;}.ace_br10{border-top-right-radius   : 3px; border-bottom-left-radius:  3px;}.ace_br11{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-left-radius:  3px;}.ace_br12{border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br13{border-top-left-radius    : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br14{border-top-right-radius   : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br15{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px;}.ace_editor {position: relative;overflow: hidden;font: 12px/normal 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;direction: ltr;text-align: left;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}.ace_scroller {position: absolute;overflow: hidden;top: 0;bottom: 0;background-color: inherit;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;cursor: text;}.ace_content {position: absolute;box-sizing: border-box;min-width: 100%;contain: style size layout;}.ace_dragging .ace_scroller:before{position: absolute;top: 0;left: 0;right: 0;bottom: 0;content: '';background: rgba(250, 250, 250, 0.01);z-index: 1000;}.ace_dragging.ace_dark .ace_scroller:before{background: rgba(0, 0, 0, 0.01);}.ace_selecting, .ace_selecting * {cursor: text !important;}.ace_gutter {position: absolute;overflow : hidden;width: auto;top: 0;bottom: 0;left: 0;cursor: default;z-index: 4;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;contain: style size layout;}.ace_gutter-active-line {position: absolute;left: 0;right: 0;}.ace_scroller.ace_scroll-left {box-shadow: 17px 0 16px -16px rgba(0, 0, 0, 0.4) inset;}.ace_gutter-cell {position: absolute;top: 0;left: 0;right: 0;padding-left: 19px;padding-right: 6px;background-repeat: no-repeat;}.ace_gutter-cell.ace_error {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABOFBMVEX/////////QRswFAb/Ui4wFAYwFAYwFAaWGAfDRymzOSH/PxswFAb/SiUwFAYwFAbUPRvjQiDllog5HhHdRybsTi3/Tyv9Tir+Syj/UC3////XurebMBIwFAb/RSHbPx/gUzfdwL3kzMivKBAwFAbbvbnhPx66NhowFAYwFAaZJg8wFAaxKBDZurf/RB6mMxb/SCMwFAYwFAbxQB3+RB4wFAb/Qhy4Oh+4QifbNRcwFAYwFAYwFAb/QRzdNhgwFAYwFAbav7v/Uy7oaE68MBK5LxLewr/r2NXewLswFAaxJw4wFAbkPRy2PyYwFAaxKhLm1tMwFAazPiQwFAaUGAb/QBrfOx3bvrv/VC/maE4wFAbRPBq6MRO8Qynew8Dp2tjfwb0wFAbx6eju5+by6uns4uH9/f36+vr/GkHjAAAAYnRSTlMAGt+64rnWu/bo8eAA4InH3+DwoN7j4eLi4xP99Nfg4+b+/u9B/eDs1MD1mO7+4PHg2MXa347g7vDizMLN4eG+Pv7i5evs/v79yu7S3/DV7/498Yv24eH+4ufQ3Ozu/v7+y13sRqwAAADLSURBVHjaZc/XDsFgGIBhtDrshlitmk2IrbHFqL2pvXf/+78DPokj7+Fz9qpU/9UXJIlhmPaTaQ6QPaz0mm+5gwkgovcV6GZzd5JtCQwgsxoHOvJO15kleRLAnMgHFIESUEPmawB9ngmelTtipwwfASilxOLyiV5UVUyVAfbG0cCPHig+GBkzAENHS0AstVF6bacZIOzgLmxsHbt2OecNgJC83JERmePUYq8ARGkJx6XtFsdddBQgZE2nPR6CICZhawjA4Fb/chv+399kfR+MMMDGOQAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: 2px center;}.ace_gutter-cell.ace_warning {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAmVBMVEX///8AAAD///8AAAAAAABPSzb/5sAAAAB/blH/73z/ulkAAAAAAAD85pkAAAAAAAACAgP/vGz/rkDerGbGrV7/pkQICAf////e0IsAAAD/oED/qTvhrnUAAAD/yHD/njcAAADuv2r/nz//oTj/p064oGf/zHAAAAA9Nir/tFIAAAD/tlTiuWf/tkIAAACynXEAAAAAAAAtIRW7zBpBAAAAM3RSTlMAABR1m7RXO8Ln31Z36zT+neXe5OzooRDfn+TZ4p3h2hTf4t3k3ucyrN1K5+Xaks52Sfs9CXgrAAAAjklEQVR42o3PbQ+CIBQFYEwboPhSYgoYunIqqLn6/z8uYdH8Vmdnu9vz4WwXgN/xTPRD2+sgOcZjsge/whXZgUaYYvT8QnuJaUrjrHUQreGczuEafQCO/SJTufTbroWsPgsllVhq3wJEk2jUSzX3CUEDJC84707djRc5MTAQxoLgupWRwW6UB5fS++NV8AbOZgnsC7BpEAAAAABJRU5ErkJggg==");background-position: 2px center;}.ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAJ0Uk5TAAB2k804AAAAPklEQVQY02NgIB68QuO3tiLznjAwpKTgNyDbMegwisCHZUETUZV0ZqOquBpXj2rtnpSJT1AEnnRmL2OgGgAAIKkRQap2htgAAAAASUVORK5CYII=");background-position: 2px center;}.ace_dark .ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAJFBMVEUAAAChoaGAgIAqKiq+vr6tra1ZWVmUlJSbm5s8PDxubm56enrdgzg3AAAAAXRSTlMAQObYZgAAAClJREFUeNpjYMAPdsMYHegyJZFQBlsUlMFVCWUYKkAZMxZAGdxlDMQBAG+TBP4B6RyJAAAAAElFTkSuQmCC");}.ace_scrollbar {contain: strict;position: absolute;right: 0;bottom: 0;z-index: 6;}.ace_scrollbar-inner {position: absolute;cursor: text;left: 0;top: 0;}.ace_scrollbar-v{overflow-x: hidden;overflow-y: scroll;top: 0;}.ace_scrollbar-h {overflow-x: scroll;overflow-y: hidden;left: 0;}.ace_print-margin {position: absolute;height: 100%;}.ace_text-input {position: absolute;z-index: 0;width: 0.5em;height: 1em;opacity: 0;background: transparent;-moz-appearance: none;appearance: none;border: none;resize: none;outline: none;overflow: hidden;font: inherit;padding: 0 1px;margin: 0 -1px;contain: strict;-ms-user-select: text;-moz-user-select: text;-webkit-user-select: text;user-select: text;white-space: pre!important;}.ace_text-input.ace_composition {background: transparent;color: inherit;z-index: 1000;opacity: 1;}.ace_composition_placeholder { color: transparent }.ace_composition_marker { border-bottom: 1px solid;position: absolute;border-radius: 0;margin-top: 1px;}[ace_nocontext=true] {transform: none!important;filter: none!important;perspective: none!important;clip-path: none!important;mask : none!important;contain: none!important;perspective: none!important;mix-blend-mode: initial!important;z-index: auto;}.ace_layer {z-index: 1;position: absolute;overflow: hidden;word-wrap: normal;white-space: pre;height: 100%;width: 100%;box-sizing: border-box;pointer-events: none;}.ace_gutter-layer {position: relative;width: auto;text-align: right;pointer-events: auto;height: 1000000px;contain: style size layout;}.ace_text-layer {font: inherit !important;position: absolute;height: 1000000px;width: 1000000px;contain: style size layout;}.ace_text-layer > .ace_line, .ace_text-layer > .ace_line_group {contain: style size layout;position: absolute;top: 0;left: 0;right: 0;}.ace_hidpi .ace_text-layer,.ace_hidpi .ace_gutter-layer,.ace_hidpi .ace_content,.ace_hidpi .ace_gutter {contain: strict;will-change: transform;}.ace_hidpi .ace_text-layer > .ace_line, .ace_hidpi .ace_text-layer > .ace_line_group {contain: strict;}.ace_cjk {display: inline-block;text-align: center;}.ace_cursor-layer {z-index: 4;}.ace_cursor {z-index: 4;position: absolute;box-sizing: border-box;border-left: 2px solid;transform: translatez(0);}.ace_multiselect .ace_cursor {border-left-width: 1px;}.ace_slim-cursors .ace_cursor {border-left-width: 1px;}.ace_overwrite-cursors .ace_cursor {border-left-width: 0;border-bottom: 1px solid;}.ace_hidden-cursors .ace_cursor {opacity: 0.2;}.ace_smooth-blinking .ace_cursor {transition: opacity 0.18s;}.ace_animate-blinking .ace_cursor {animation-duration: 1000ms;animation-timing-function: step-end;animation-name: blink-ace-animate;animation-iteration-count: infinite;}.ace_animate-blinking.ace_smooth-blinking .ace_cursor {animation-duration: 1000ms;animation-timing-function: ease-in-out;animation-name: blink-ace-animate-smooth;}@keyframes blink-ace-animate {from, to { opacity: 1; }60% { opacity: 0; }}@keyframes blink-ace-animate-smooth {from, to { opacity: 1; }45% { opacity: 1; }60% { opacity: 0; }85% { opacity: 0; }}.ace_marker-layer .ace_step, .ace_marker-layer .ace_stack {position: absolute;z-index: 3;}.ace_marker-layer .ace_selection {position: absolute;z-index: 5;}.ace_marker-layer .ace_bracket {position: absolute;z-index: 6;}.ace_marker-layer .ace_active-line {position: absolute;z-index: 2;}.ace_marker-layer .ace_selected-word {position: absolute;z-index: 4;box-sizing: border-box;}.ace_line .ace_fold {box-sizing: border-box;display: inline-block;height: 11px;margin-top: -2px;vertical-align: middle;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACJJREFUeNpi+P//fxgTAwPDBxDxD078RSX+YeEyDFMCIMAAI3INmXiwf2YAAAAASUVORK5CYII=");background-repeat: no-repeat, repeat-x;background-position: center center, top left;color: transparent;border: 1px solid black;border-radius: 2px;cursor: pointer;pointer-events: auto;}.ace_dark .ace_fold {}.ace_fold:hover{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACBJREFUeNpi+P//fz4TAwPDZxDxD5X4i5fLMEwJgAADAEPVDbjNw87ZAAAAAElFTkSuQmCC");}.ace_tooltip {background-color: #FFF;background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1));border: 1px solid gray;border-radius: 1px;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);color: black;max-width: 100%;padding: 3px 4px;position: fixed;z-index: 999999;box-sizing: border-box;cursor: default;white-space: pre;word-wrap: break-word;line-height: normal;font-style: normal;font-weight: normal;letter-spacing: normal;pointer-events: none;}.ace_folding-enabled > .ace_gutter-cell {padding-right: 13px;}.ace_fold-widget {box-sizing: border-box;margin: 0 -12px 0 1px;display: none;width: 11px;vertical-align: top;background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42mWKsQ0AMAzC8ixLlrzQjzmBiEjp0A6WwBCSPgKAXoLkqSot7nN3yMwR7pZ32NzpKkVoDBUxKAAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: center;border-radius: 3px;border: 1px solid transparent;cursor: pointer;}.ace_folding-enabled .ace_fold-widget {display: inline-block;   }.ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42m3HwQkAMAhD0YzsRchFKI7sAikeWkrxwScEB0nh5e7KTPWimZki4tYfVbX+MNl4pyZXejUO1QAAAABJRU5ErkJggg==");}.ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAGCAYAAAAG5SQMAAAAOUlEQVR42jXKwQkAMAgDwKwqKD4EwQ26sSOkVWjgIIHAzPiCgaqiqnJHZnKICBERHN194O5b9vbLuAVRL+l0YWnZAAAAAElFTkSuQmCCXA==");}.ace_fold-widget:hover {border: 1px solid rgba(0, 0, 0, 0.3);background-color: rgba(255, 255, 255, 0.2);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);}.ace_fold-widget:active {border: 1px solid rgba(0, 0, 0, 0.4);background-color: rgba(0, 0, 0, 0.05);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);}.ace_dark .ace_fold-widget {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHklEQVQIW2P4//8/AzoGEQ7oGCaLLAhWiSwB146BAQCSTPYocqT0AAAAAElFTkSuQmCC");}.ace_dark .ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAH0lEQVQIW2P4//8/AxQ7wNjIAjDMgC4AxjCVKBirIAAF0kz2rlhxpAAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAFCAYAAACAcVaiAAAAHElEQVQIW2P4//+/AxAzgDADlOOAznHAKgPWAwARji8UIDTfQQAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget:hover {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);background-color: rgba(255, 255, 255, 0.1);}.ace_dark .ace_fold-widget:active {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);}.ace_inline_button {border: 1px solid lightgray;display: inline-block;margin: -1px 8px;padding: 0 5px;pointer-events: auto;cursor: pointer;}.ace_inline_button:hover {border-color: gray;background: rgba(200,200,200,0.2);display: inline-block;pointer-events: auto;}.ace_fold-widget.ace_invalid {background-color: #FFB4B4;border-color: #DE5555;}.ace_fade-fold-widgets .ace_fold-widget {transition: opacity 0.4s ease 0.05s;opacity: 0;}.ace_fade-fold-widgets:hover .ace_fold-widget {transition: opacity 0.05s ease 0.05s;opacity:1;}.ace_underline {text-decoration: underline;}.ace_bold {font-weight: bold;}.ace_nobold .ace_bold {font-weight: normal;}.ace_italic {font-style: italic;}.ace_error-marker {background-color: rgba(255, 0, 0,0.2);position: absolute;z-index: 9;}.ace_highlight-marker {background-color: rgba(255, 255, 0,0.2);position: absolute;z-index: 8;}
+/*# sourceURL=ace/css/ace_editor.css */</style>
+
+<title>#09 v-ifで条件分岐をしてみよう | Vue.js入門 - プログラミングならドットインストール</title>
+<meta name="description" content="Vue.js入門の#9回: v-ifで条件分岐をすることで、ToDoが存在しなかった場合のUIを作り込んでいきます。">
+<meta name="author" content="dotinstall">
+<meta name="copyright" content="Copyright (C) dotinstall.com">
+
+
+<!--
+
+[エンジニア、プログラマのあるある話]
+
+"JavaScriptのDateオブジェクトでmonthが0から始まることにびっくりしたことがある"
+
+投稿は Twitter / @dotinstall までお寄せください。
+
+-->
+
+<link rel="canonical" href="https://dotinstall.com/lessons/basic_vuejs_v2/43909">
+<link rel="icon" type="image/png" sizes="16x16" href="https://dotinstall.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://dotinstall.com/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://dotinstall.com/apple_touch_icon_180x180.png">
+<link rel="index" href="https://dotinstall.com/">
+<link rel="stylesheet" href="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/cf.css">
+<link rel="alternate" type="application/rss+xml" title="新着レッスンRSS" href="https://dotinstall.com/lessons.rss">
+<link rel="alternate" type="application/rss+xml" title="新着補足情報RSS" href="https://dotinstall.com/lessons/knowledge.rss">
+<script src="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/jquery-1.10.2.min.js"></script>
+
+<!--[if lt IE 9]>
+<script src="/js/html5shiv.js"></script>
+<![endif]-->
+
+<link rel="stylesheet" href="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/jquery.circliful.css">
+<link rel="stylesheet" href="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/bootstrap_328.css">
+<link rel="stylesheet" href="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/font-awesome.min.css">
+<link rel="stylesheet" href="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/dotinstall-icons.css">
+<link href="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/github-gist.css" rel="stylesheet">
+
+
+<link href="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/video-js.min.css" rel="stylesheet">
+<link href="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/videojs-change-speed-premium.css" rel="stylesheet">
+<link href="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/videojs-quality-selector.css" rel="stylesheet">
+<link href="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/videojs-card.css" rel="stylesheet">
+<link href="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/videojs-voice-selector.css" rel="stylesheet">
+<link href="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/videojs-dotinstall-custom.css" rel="stylesheet">
+
+<link rel="stylesheet" href="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/dotinstall.css">
+<link rel="stylesheet" href="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/immersive-responsive.css">
+
+
+<link rel="stylesheet" href="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/package-201905.css">
+
+<style>
+html, body { min-width: 520px; }
+</style>
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-26578182-1', 'dotinstall.com');
+
+ga('set', 'userId', 'c816eef28a90f91acdc3ebf717b653eef70605b2');
+
+ga('require', 'displayfeatures');
+ga('send', 'pageview');
+</script>
+
+
+<script src="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/bootstrap_328.min.js"></script>
+<script src="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/underscore.js"></script>
+<script src="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/es6-promise.auto.min.js"></script>
+<script src="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/main.js"></script>
+<script src="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/bundle.min.js"></script>
+<script src="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/dotinstall.bundle.min.js"></script>
+
+
+
+
+<!-- Open Graph -->
+<meta property="og:title" content="#09 v-ifで条件分岐をしてみよう | Vue.js入門">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://dotinstall.com/lessons/basic_vuejs_v2/43909">
+<meta property="og:site_name" content="ドットインストール">
+<meta property="og:description" content="v-ifで条件分岐をすることで、ToDoが存在しなかった場合のUIを作り込んでいきます。">
+<meta property="og:image" content="https://s3-ap-northeast-1.amazonaws.com/i1.dotinstall.com/basic_vuejs_v2/43909-00002.png">
+<meta property="og:locale" content="ja_JP">
+<meta property="fb:admins" content="569511872">
+<meta property="fb:app_id" content="128241633952367">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@dotinstall">
+<meta name="twitter:title" content="#09 v-ifで条件分岐をしてみよう | Vue.js入門">
+<meta name="twitter:description" content="v-ifで条件分岐をすることで、ToDoが存在しなかった場合のUIを作り込んでいきます。">
+<meta name="twitter:image" content="https://s3-ap-northeast-1.amazonaws.com/i1.dotinstall.com/basic_vuejs_v2/43909-00002.png">
+
+</head>
+<body style="min-height: 1000px;">
+
+<style>
+.container.immersive #main {
+    min-width: 520px;
+}
+.container.immersive #sidebar {
+    width: 680px;
+}
+</style>
+<script>
+(function() {
+    'use strict';
+
+    Dotinstall.sizes.MAIN_TOP_PADDING = 16;
+    Dotinstall.sizes.MAIN_HORIZONTAL_PADDING = 48 + 16 + 16;
+
+    Dotinstall.sizes.main = {
+        minWidth: 520 + Dotinstall.sizes.MAIN_HORIZONTAL_PADDING
+    };
+
+    Dotinstall.sizes.sidebar = {
+        width: 680,
+        minWidth: 400
+    };
+
+    Dotinstall.sizes.player = {
+        minWidth: 520
+    };
+
+})();
+</script>
+
+<div id="fb-root" style="display:none;"></div>
+
+<div class="navbar navbar-fixed-top no-top-border  dotinstall-normal-topbar" id="lesson_show_page">
+
+
+<div class="navbar-inner" style="width: auto;">
+<div id="topbar_inner_container" class="container wide fit-to-left">
+
+<h1 class="premiumLogo">
+<a href="https://dotinstall.com/"><span>ドットインストール - 3分動画でマスターできるプログラミング学習サービス</span></a>
+</h1>
+
+<ul class="nav" id="global_menu" style="position: relative; font-size: 12px; display: block;">
+<li class=" disappear"><a href="https://dotinstall.com/home">マイページ</a></li>
+<li class="active movable" data-menu-index="1"><a href="https://dotinstall.com/lessons">レッスン一覧</a></li>
+<li class=" movable" data-menu-index="2"><a href="https://dotinstall.com/premium"><span style="font-weight:bold;color:#f39800;">プレミアム会員</span></a></li>
+<li class=" movable" data-menu-index="3"><a href="https://dotinstall.com/business">法人でのご利用</a></li>
+<li>
+<form action="https://dotinstall.com/search" id="topbar_search" class="form pull-left enable-incremental-lesson-search" onsubmit="if ($(this).find(&#39;.q&#39;).val() === &#39;&#39;) { return false; }">
+<div class="input-append" style="padding:12px 0 0 0;">
+<div class="btn-group">
+<input type="text" style="font-size: 12px; width: 200px;" placeholder="ソースコード、レッスンを検索" name="q" class="q" id="q_in_topbar" value="" autocomplete="off">
+<input type="hidden" name="f" value="topbar">
+<button type="submit" class="btn"><i class="icon-search"></i></button>
+</div>
+</div>
+<div id="incremental"></div>
+</form>
+
+</li>
+</ul><!-- /.nav -->
+
+<ul class="nav pull-right topbar-right-nav" id="global_pulldown">
+  <li class="dropdown">
+<b class="caret"></b>
+<a href="https://dotinstall.com/lessons/basic_vuejs_v2/43909#" class="dropdown-toggle text-ellipsis" data-toggle="dropdown">
+<img src="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/bug2.gif" class="topBarIcon">
+<span class="user-name">mnitta</span>
+</a>
+
+<ul id="global_dropdown_menu" class="dropdown-menu">
+<li><a href="https://dotinstall.com/home">マイページ</a></li>
+<li class="divider show-narrowed"></li>
+<li><a href="https://dotinstall.com/users/mnitta" id="dropdown_user_profile">プロフィール</a></li>
+<li><a href="https://dotinstall.com/user/settings">設定変更</a></li>
+<li><a href="https://dotinstall.com/help">ヘルプ</a></li>
+
+
+<li class="divider"></li>
+<li><a href="https://dotinstall.com/lessons/basic_vuejs_v2/43909#" onclick="$(&#39;#logout-form&#39;).submit();">ログアウト</a><form id="logout-form" action="https://dotinstall.com/logout.php" method="post" style="display:none;"><input type="hidden" class="one_time_token" name="one_time_token" value="c5d6affc69146941bb986804c8ea10ad00cd7d7c7a6e2922f1573011e0fe1d70"></form></li>
+</ul><!-- /dropdown-menu -->
+
+</li>
+
+</ul><!-- /nav pull-right -->
+
+</div><!--/container -->
+</div><!-- /navbar-inner -->
+</div><!-- /navbar -->
+
+
+<div class="container immersive">
+
+<div class="row">
+<div class="span13" id="main" style="position: relative; visibility: visible; width: 520px; height: 778px;">
+
+<div id="main_contents" itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject">
+<div id="breadcrumb_wrapper">
+<ul class="light-color-breadcrumb" id="breadcrumb" style="width: 520px;">
+<li><a href="https://dotinstall.com/home"><i class="fa fa-home"></i></a></li>
+<li><a href="https://dotinstall.com/lessons">レッスン一覧</a></li>
+<li><a href="https://dotinstall.com/lessons/basic_vuejs_v2">Vue.js入門</a></li>
+<li style="width: 324px;">#09 v-ifで条件分岐をしてみよう</li>
+</ul>
+</div>
+
+<div class="wide-notice">
+
+
+</div><!-- /wide-notice -->
+
+<meta itemprop="name" content="#09 v-ifで条件分岐をしてみよう">
+<meta itemprop="duration" content="PT2M48S">
+<meta itemprop="thumbnailUrl" content="https://s3-ap-northeast-1.amazonaws.com/i1.dotinstall.com/basic_vuejs_v2/43909-00002.png">
+<meta itemprop="uploadDate" content="2018-02-15T15:57:40+09:00">
+
+<div id="video_section" class="mb15 posr" style="clear:both;"><!-- video section start -->
+
+<div id="video_error_message" class="alert alert-warning" style="display:none;">
+動画の読み込みに失敗しました。しばらく待ってからリロードしてみてください。解決しない場合は<a href="https://dotinstall.com/help#video_trouble" target="_blank">ヘルプの「動画が見られない場合について」</a>もご覧ください。
+</div>
+<script id="vjs_center_card_template" type="text/template" data-tracking-label="video/end/question"><!--
+<h4 class="vjs-center-card-header">レッスンで分からないところはありましたか？</h4>
+<p>分からなかったところを先生に質問してみましょう。</p>
+<p>質問はページ右下の丸いボタンからご利用ください。</p>
+--></script>
+
+<script src="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/video.min.js"></script>
+
+<script>
+    videojs.options.flash.swf = "http://dotinstall.com/video-js.swf";
+</script>
+
+<script src="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/videojs-progress-helper.js"></script>
+
+<script src="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/videojs-quality-selector.js"></script>
+<script src="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/basic_vuejs_v2.js"></script>
+<script src="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/videojs-card.js"></script>
+
+<script src="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/videojs.speed"></script>
+<script src="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/videojs-voice-selector"></script>
+
+
+<div oncontextmenu="return false;" controlslist="nodownload" class="video-js vjs-default-skin vjs-controls-enabled vjs-has-started vjs-paused vjs-user-active" id="videojs_player" style="opacity: 1; width: 520px; height: 292.5px;"><video style="opacity: 1; width: 520px; height: 292.5px;" id="videojs_player_html5_api" class="vjs-tech" controlslist="nodownload" oncontextmenu="return false;" src="https://s3-ap-northeast-1.amazonaws.com/media.dotinstall.com/basic_vuejs_v2/43909_360p.webm?AWSAccessKeyId=AKIAI3P7QV3I7WZAFCYA&amp;Expires=1563121430&amp;Signature=uOCkt1L%2FuRzBEss0SzMRa9feEps%3D">
+                              <source src="https://s3-ap-northeast-1.amazonaws.com/media.dotinstall.com/basic_vuejs_v2/43909_720p.webm?AWSAccessKeyId=AKIAI3P7QV3I7WZAFCYA&amp;Expires=1563121430&amp;Signature=V9xJtdvKzLN48Qequ%2BGfzmpm2F0%3D" data-res="720" data-voice="m" type="video/webm">
+                                <source src="https://s3-ap-northeast-1.amazonaws.com/media.dotinstall.com/basic_vuejs_v2/43909_w_720p.webm?AWSAccessKeyId=AKIAI3P7QV3I7WZAFCYA&amp;Expires=1563121430&amp;Signature=25tBDtJYghwdtE1pUZUulS%2BAPIQ%3D" data-res="720" data-voice="w" type="video/webm">
+                                          <source src="https://s3-ap-northeast-1.amazonaws.com/media.dotinstall.com/basic_vuejs_v2/43909_360p.webm?AWSAccessKeyId=AKIAI3P7QV3I7WZAFCYA&amp;Expires=1563121430&amp;Signature=uOCkt1L%2FuRzBEss0SzMRa9feEps%3D" data-res="360" data-voice="m" type="video/webm">
+                                <source src="https://s3-ap-northeast-1.amazonaws.com/media.dotinstall.com/basic_vuejs_v2/43909_w_360p.webm?AWSAccessKeyId=AKIAI3P7QV3I7WZAFCYA&amp;Expires=1563121430&amp;Signature=nz6zPHE%2BU96i6Aj1XUJacry%2FuB4%3D" data-res="360" data-voice="w" type="video/webm">
+                    </video><div></div><div class="vjs-poster vjs-hidden" tabindex="-1"></div><div class="vjs-loading-spinner"></div><div class="vjs-text-track-display vjs-hidden"></div><div class="vjs-big-play-button" role="button" aria-live="polite" tabindex="0" aria-label="play video"><span aria-hidden="true"></span></div><div class="vjs-control-bar"><div class="vjs-play-control vjs-control  vjs-paused" role="button" aria-live="polite" tabindex="0"><div class="vjs-control-content"><span class="vjs-control-text">Play</span></div></div><div class="vjs-current-time vjs-time-controls vjs-control"><div class="vjs-current-time-display" aria-live="off"><span class="vjs-control-text">Current Time</span> 0:02</div></div><div class="vjs-time-divider"><div><span>/</span></div></div><div class="vjs-duration vjs-time-controls vjs-control"><div class="vjs-duration-display" aria-live="off"><span class="vjs-control-text">Duration Time</span> 2:47</div></div><div class="vjs-remaining-time vjs-time-controls vjs-control"><div class="vjs-remaining-time-display" aria-live="off"><span class="vjs-control-text">Remaining Time</span> -2:44</div></div><div class="vjs-live-controls vjs-control vjs-hidden"><div class="vjs-live-display" aria-live="off"><span class="vjs-control-text">Stream Type</span>LIVE</div></div><div class="vjs-progress-control vjs-control"><div role="slider" aria-valuenow="1.77" aria-valuemin="0" aria-valuemax="100" tabindex="0" class="vjs-progress-holder vjs-slider" aria-label="video progress bar" aria-valuetext="0:02"><div class="vjs-load-progress" style="width: 50.381%;"><span class="vjs-control-text" style="left: 0%; width: 100%;"><span>Loaded</span>: 0%</span></div><div class="vjs-play-progress" style="width: 1.77%;"><span class="vjs-control-text"><span>Progress</span>: 0%</span></div><div class="vjs-seek-handle vjs-slider-handle" aria-live="off" style="left: 1.77%;"><span class="vjs-control-text">0:02</span></div></div></div><div class="vjs-fullscreen-control vjs-control " role="button" aria-live="polite" tabindex="0"><div class="vjs-control-content"><span class="vjs-control-text">Fullscreen</span></div></div><div class="vjs-volume-control vjs-control"><div role="slider" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100" tabindex="0" class="vjs-volume-bar vjs-slider" aria-label="volume level" aria-valuetext="98%"><div class="vjs-volume-level" style="width: 98%;"><span class="vjs-control-text"></span></div><div class="vjs-volume-handle vjs-slider-handle" style="left: 98%;"><span class="vjs-control-text">00:00</span></div></div></div><div class="vjs-mute-control vjs-control vjs-vol-3" role="button" aria-live="polite" tabindex="0"><div><span class="vjs-control-text">Mute</span></div></div><div class="vjs-playback-rate vjs-menu-button vjs-control  vjs-hidden" role="button" aria-live="polite" tabindex="0" aria-haspopup="true"><div class="vjs-control-content"><span class="vjs-control-text">Playback Rate</span><div class="vjs-menu"><ul class="vjs-menu-content"></ul></div></div><div class="vjs-playback-rate-value">1</div></div><div class="vjs-subtitles-button vjs-menu-button vjs-control  vjs-hidden" role="button" aria-live="polite" tabindex="0" aria-haspopup="true" aria-label="Subtitles Menu"><div class="vjs-control-content"><span class="vjs-control-text">Subtitles</span><div class="vjs-menu"><ul class="vjs-menu-content"><li class="vjs-menu-item vjs-selected" role="button" aria-live="polite" tabindex="0" aria-selected="true">subtitles off</li></ul></div></div></div><div class="vjs-captions-button vjs-menu-button vjs-control  vjs-hidden" role="button" aria-live="polite" tabindex="0" aria-haspopup="true" aria-label="Captions Menu"><div class="vjs-control-content"><span class="vjs-control-text">Captions</span><div class="vjs-menu"><ul class="vjs-menu-content"><li class="vjs-menu-item vjs-selected" role="button" aria-live="polite" tabindex="0" aria-selected="true">captions off</li></ul></div></div></div><div class="vjs-chapters-button vjs-menu-button vjs-control  vjs-hidden" role="button" aria-live="polite" tabindex="0" aria-haspopup="true" aria-label="Chapters Menu"><div class="vjs-control-content"><span class="vjs-control-text">Chapters</span><div class="vjs-menu"><ul class="vjs-menu-content"><li class="vjs-menu-title">Chapters</li></ul></div></div></div><div class="vjs-speed-control vjs-menu-button vjs-control" aria-haspopup="true" role="button" aria-pressed="true"><span class="vjs-current-speed">x1.0</span><div class="vjs-menu"><ul class="vjs-menu-content"><li class="vjs-menu-item" role="button" aria-live="polite" tabindex="0" aria-selected="false">x2.0</li><li class="vjs-menu-item" role="button" aria-live="polite" tabindex="0" aria-selected="false">x1.8</li><li class="vjs-menu-item" role="button" aria-live="polite" tabindex="0" aria-selected="false">x1.6</li><li class="vjs-menu-item" role="button" aria-live="polite" tabindex="0" aria-selected="false">x1.4</li><li class="vjs-menu-item" role="button" aria-live="polite" tabindex="0" aria-selected="false">x1.2</li><li class="vjs-menu-item vjs-selected" role="button" aria-live="polite" tabindex="0" aria-selected="true">x1.0</li><li class="vjs-menu-item" role="button" aria-live="polite" tabindex="0" aria-selected="false">x0.9</li><li class="vjs-menu-item" role="button" aria-live="polite" tabindex="0" aria-selected="false">x0.8</li><li class="vjs-menu-item" role="button" aria-live="polite" tabindex="0" aria-selected="false">x0.7</li></ul></div></div><div class="vjs-voice-button vjs-menu-button vjs-control" role="button" aria-live="polite" tabindex="0" aria-haspopup="true"><div class="vjs-control-content"><span class="vjs-current-voice">男性ボイス</span></div><div class="vjs-menu"><ul class="vjs-menu-content"><li class="vjs-menu-item" role="button" aria-live="polite" tabindex="0" aria-selected="false">女性ボイス</li><li class="vjs-menu-item vjs-selected" role="button" aria-live="polite" tabindex="0" aria-selected="true">男性ボイス</li></ul></div></div><div class="vjs-res-button vjs-menu-button vjs-control" role="button" aria-live="polite" tabindex="0"><div class="vjs-control-content"><span class="vjs-current-res vjs-res-low">HD</span></div></div><div class="vjs-progress-helper"><div role="slider" aria-valuenow="1.77" aria-valuemin="0" aria-valuemax="100" tabindex="0" class="vjs-progress-holder vjs-slider" aria-label="video progress bar" aria-valuetext="0:02"><div class="vjs-load-progress" style="width: 50.381%;"><span class="vjs-control-text" style="left: 0%; width: 100%;"><span>Loaded</span>: 0%</span></div><div class="vjs-play-progress" style="width: 1.77%;"><span class="vjs-control-text"><span>Progress</span>: 0%</span></div><div class="vjs-seek-handle vjs-slider-handle" aria-live="off" style="left: 1.77%;"><span class="vjs-control-text">0:02</span></div></div></div></div><div class="vjs-error-display"><div></div></div><div class="vjs-caption-settings vjs-modal-overlay vjs-hidden"><div class="vjs-tracksettings"><div class="vjs-tracksettings-colors"><div class="vjs-fg-color vjs-tracksetting"><label class="vjs-label">Foreground</label><select><option value="">---</option><option value="#FFF">White</option><option value="#000">Black</option><option value="#F00">Red</option><option value="#0F0">Green</option><option value="#00F">Blue</option><option value="#FF0">Yellow</option><option value="#F0F">Magenta</option><option value="#0FF">Cyan</option></select><span class="vjs-text-opacity vjs-opacity"><select><option value="">---</option><option value="1">Opaque</option><option value="0.5">Semi-Opaque</option></select></span></div><div class="vjs-bg-color vjs-tracksetting"><label class="vjs-label">Background</label><select><option value="">---</option><option value="#FFF">White</option><option value="#000">Black</option><option value="#F00">Red</option><option value="#0F0">Green</option><option value="#00F">Blue</option><option value="#FF0">Yellow</option><option value="#F0F">Magenta</option><option value="#0FF">Cyan</option></select><span class="vjs-bg-opacity vjs-opacity"><select><option value="">---</option><option value="1">Opaque</option><option value="0.5">Semi-Transparent</option><option value="0">Transparent</option></select></span></div><div class="window-color vjs-tracksetting"><label class="vjs-label">Window</label><select><option value="">---</option><option value="#FFF">White</option><option value="#000">Black</option><option value="#F00">Red</option><option value="#0F0">Green</option><option value="#00F">Blue</option><option value="#FF0">Yellow</option><option value="#F0F">Magenta</option><option value="#0FF">Cyan</option></select><span class="vjs-window-opacity vjs-opacity"><select><option value="">---</option><option value="1">Opaque</option><option value="0.5">Semi-Transparent</option><option value="0">Transparent</option></select></span></div></div><div class="vjs-tracksettings-font"><div class="vjs-font-percent vjs-tracksetting"><label class="vjs-label">Font Size</label><select><option value="0.50">50%</option><option value="0.75">75%</option><option value="1.00" selected="">100%</option><option value="1.25">125%</option><option value="1.50">150%</option><option value="1.75">175%</option><option value="2.00">200%</option><option value="3.00">300%</option><option value="4.00">400%</option></select></div><div class="vjs-edge-style vjs-tracksetting"><label class="vjs-label">Text Edge Style</label><select><option value="none">None</option><option value="raised">Raised</option><option value="depressed">Depressed</option><option value="uniform">Uniform</option><option value="dropshadow">Dropshadow</option></select></div><div class="vjs-font-family vjs-tracksetting"><label class="vjs-label">Font Family</label><select><option value="">Default</option><option value="monospaceSerif">Monospace Serif</option><option value="proportionalSerif">Proportional Serif</option><option value="monospaceSansSerif">Monospace Sans-Serif</option><option value="proportionalSansSerif">Proportional Sans-Serif</option><option value="casual">Casual</option><option value="script">Script</option><option value="small-caps">Small Caps</option></select></div></div></div><div class="vjs-tracksettings-controls"><button class="vjs-default-button">Defaults</button><button class="vjs-done-button">Done</button></div></div><div class="vjs-card vjs-center-card vjs-card-hidden vjs-card-hidden-strongly" style="margin-top: 89.25px;"><div class="vjs-center-card-contents">
+<h4 class="vjs-center-card-header">レッスンで分からないところはありましたか？</h4>
+<p>分からなかったところを先生に質問してみましょう。</p>
+<p>質問はページ右下の丸いボタンからご利用ください。</p>
+</div></div></div>
+
+<script>Dotinstall.resize.player.exec();</script>
+
+<script>
+HMHM.movie.availableQualities = ['720', '360'];
+HMHM.movie.hasWomanVoice = true;
+</script>
+
+
+
+<script>
+$(function() {
+    if ($('#vimeo_player')[0]) {
+        if (window.addEventListener) {
+            window.addEventListener('message', HMHM.movie.vimeo.onMessageReceived, false);
+        } else {
+            window.attachEvent('onmessage', HMHM.movie.vimeo.onMessageReceived);
+        }
+    }
+});
+</script>
+
+
+
+<div class="videoCommands">
+    <a class="btn lh24 flr" id="toggle_text"><span class="showText">文字起こしを<span id="toggle_text_label">表示する</span></span></a>
+
+    <a href="https://dotinstall.com/lessons/basic_vuejs_v2/43908" class="btn lh24 " style="font-size:10px;">« 前へ</a>
+            <button id="lesson-complete-button" class="btn lh24 completed" style="font-size:13px;font-weight:bold;width:176px;min-width:150px;" data-original-title="" title="">
+          <span id="completeButtonLabel" class="op5">完了済</span>
+        </button><div class="tooltip fade bottom in" style="top: 363.5px; left: 74.9531px; display: block;"><div class="tooltip-arrow"></div><div class="tooltip-inner"><strong>450</strong> 本目のレッスンが完了！</div></div>
+        <a href="https://dotinstall.com/lessons/basic_vuejs_v2/43910" class="btn lh24 " id="go_to_next_video" style="font-size:10px;">次へ »</a>
+</div><!-- /videoCommands -->
+
+<div id="caption_base_top" data-is-premium="true"></div><!-- don't remove! -->
+<div id="caption_wrapper" style="display: none;">
+
+  
+          <div id="caption" style="height: 546px; overflow-y: scroll;">
+        <div class="caption-revert-auto-scroll">自動スクロールを再開</div>
+
+        
+                  <div class="caption-row" data-time="0:03">
+            <div class="cinfo"><span class="iconSound none"><a href="https://dotinstall.com/lessons/basic_vuejs_v2/43909#" class="cinfo-link">0:03</a></span></div>
+            <div class="cbody-liquid ">
+              <div class="cbody">
+                さて前回のコメント部分は消しておいたので、次は ToDo がなかった場合に何らかのメッセージを表示するという UI を作ってみましょう。              </div><!-- /.cbody -->
+            </div><!-- /.cbody-liquid -->
+          </div><!-- /.caption-row -->
+                  <div class="caption-row" data-time="0:12">
+            <div class="cinfo"><span class="iconSound none"><a href="https://dotinstall.com/lessons/basic_vuejs_v2/43909#" class="cinfo-link">0:12</a></span></div>
+            <div class="cbody-liquid ">
+              <div class="cbody">
+                いろいろな方法がありますが、 v-show ディレクティブを使ってみましょう。              </div><!-- /.cbody -->
+            </div><!-- /.cbody-liquid -->
+          </div><!-- /.caption-row -->
+                  <div class="caption-row" data-time="0:17">
+            <div class="cinfo"><span class="iconSound none"><a href="https://dotinstall.com/lessons/basic_vuejs_v2/43909#" class="cinfo-link">0:17</a></span></div>
+            <div class="cbody-liquid ">
+              <div class="cbody">
+                どうするかというと、 todos.length が false のとき、つまり todos が空配列だった場合にメッセージを表示するには、このように書いてあげれば OK です。              </div><!-- /.cbody -->
+            </div><!-- /.cbody-liquid -->
+          </div><!-- /.caption-row -->
+                  <div class="caption-row" data-time="0:32">
+            <div class="cinfo"><span class="iconSound none"><a href="https://dotinstall.com/lessons/basic_vuejs_v2/43909#" class="cinfo-link">0:32</a></span></div>
+            <div class="cbody-liquid ">
+              <div class="cbody">
+                メッセージは適当にしてあげましょう。              </div><!-- /.cbody -->
+            </div><!-- /.cbody-liquid -->
+          </div><!-- /.caption-row -->
+                  <div class="caption-row" data-time="0:37">
+            <div class="cinfo"><span class="iconSound none"><a href="https://dotinstall.com/lessons/basic_vuejs_v2/43909#" class="cinfo-link">0:37</a></span></div>
+            <div class="cbody-liquid ">
+              <div class="cbody">
+                では、 todos がなかった場合のことを考えたいので、一旦こちらはコメントにしてあげつつ、 todos を空配列としてあげましょう。              </div><!-- /.cbody -->
+            </div><!-- /.cbody-liquid -->
+          </div><!-- /.caption-row -->
+                  <div class="caption-row" data-time="0:48">
+            <div class="cinfo"><span class="iconSound none"><a href="https://dotinstall.com/lessons/basic_vuejs_v2/43909#" class="cinfo-link">0:48</a></span></div>
+            <div class="cbody-liquid ">
+              <div class="cbody">
+                では見てあげると…、こうですね。              </div><!-- /.cbody -->
+            </div><!-- /.cbody-liquid -->
+          </div><!-- /.caption-row -->
+                  <div class="caption-row" data-time="0:49">
+            <div class="cinfo"><span class="iconSound none"><a href="https://dotinstall.com/lessons/basic_vuejs_v2/43909#" class="cinfo-link">0:49</a></span></div>
+            <div class="cbody-liquid ">
+              <div class="cbody">
+                ちゃんとメッセージが表示されていて、追加するとメッセージが消えたのがわかるかと思います。              </div><!-- /.cbody -->
+            </div><!-- /.cbody-liquid -->
+          </div><!-- /.caption-row -->
+                  <div class="caption-row" data-time="0:56">
+            <div class="cinfo"><span class="iconSound none"><a href="https://dotinstall.com/lessons/basic_vuejs_v2/43909#" class="cinfo-link">0:56</a></span></div>
+            <div class="cbody-liquid ">
+              <div class="cbody">
+                もしくは別の方法で、 v-if ディレクティブを使う方法もあります。              </div><!-- /.cbody -->
+            </div><!-- /.cbody-liquid -->
+          </div><!-- /.caption-row -->
+                  <div class="caption-row" data-time="1:02">
+            <div class="cinfo"><span class="iconSound none"><a href="https://dotinstall.com/lessons/basic_vuejs_v2/43909#" class="cinfo-link">1:02</a></span></div>
+            <div class="cbody-liquid ">
+              <div class="cbody">
+                では一旦コメントにしてあげて、こちらをコピーしてあげて、 v-if ディレクティブを使ってあげましょう。              </div><!-- /.cbody -->
+            </div><!-- /.cbody-liquid -->
+          </div><!-- /.caption-row -->
+                  <div class="caption-row" data-time="1:08">
+            <div class="cinfo"><span class="iconSound none"><a href="https://dotinstall.com/lessons/basic_vuejs_v2/43909#" class="cinfo-link">1:08</a></span></div>
+            <div class="cbody-liquid ">
+              <div class="cbody">
+                どうするかというと、 v-if="todos.length" としつつ、下の方で v-else としてあげれば、 todos.length が true のときはこちらの処理、 todos.length が false のときはこちらの処理が実行されます。              </div><!-- /.cbody -->
+            </div><!-- /.cbody-liquid -->
+          </div><!-- /.caption-row -->
+                  <div class="caption-row" data-time="1:34">
+            <div class="cinfo"><span class="iconSound none"><a href="https://dotinstall.com/lessons/basic_vuejs_v2/43909#" class="cinfo-link">1:34</a></span></div>
+            <div class="cbody-liquid ">
+              <div class="cbody">
+                では見てあげると、上手くいくかと思いきや、実は上手くいっていないのが分かるかと思います。              </div><!-- /.cbody -->
+            </div><!-- /.cbody-liquid -->
+          </div><!-- /.caption-row -->
+                  <div class="caption-row" data-time="1:40">
+            <div class="cinfo"><span class="iconSound none"><a href="https://dotinstall.com/lessons/basic_vuejs_v2/43909#" class="cinfo-link">1:40</a></span></div>
+            <div class="cbody-liquid ">
+              <div class="cbody">
+                これはなぜかというと、 v-for は v-if よりも先に実行されるからですね。              </div><!-- /.cbody -->
+            </div><!-- /.cbody-liquid -->
+          </div><!-- /.caption-row -->
+                  <div class="caption-row" data-time="1:45">
+            <div class="cinfo"><span class="iconSound none"><a href="https://dotinstall.com/lessons/basic_vuejs_v2/43909#" class="cinfo-link">1:45</a></span></div>
+            <div class="cbody-liquid ">
+              <div class="cbody">
+                今回のように todos が今、空の場合はそもそもループが回らないので、そのあとの v-if の判定も行われず、結局何も表示されないという仕組みになっています。              </div><!-- /.cbody -->
+            </div><!-- /.cbody-liquid -->
+          </div><!-- /.caption-row -->
+                  <div class="caption-row" data-time="1:59">
+            <div class="cinfo"><span class="iconSound none"><a href="https://dotinstall.com/lessons/basic_vuejs_v2/43909#" class="cinfo-link">1:59</a></span></div>
+            <div class="cbody-liquid ">
+              <div class="cbody">
+                もしこのような処理をしたい場合は、 v-if と v-for を一緒に使わないようにすればいいので、 ul 自体の方に v-if を付けてあげて、 todos.length が true のときはこちらのループ、そして todos.length が false のときは別の ul を表示してあげれば OK でしょう。              </div><!-- /.cbody -->
+            </div><!-- /.cbody-liquid -->
+          </div><!-- /.caption-row -->
+                  <div class="caption-row" data-time="2:28">
+            <div class="cinfo"><span class="iconSound none"><a href="https://dotinstall.com/lessons/basic_vuejs_v2/43909#" class="cinfo-link">2:28</a></span></div>
+            <div class="cbody-liquid ">
+              <div class="cbody">
+                こちらの li の方でメッセージを表示しつつ、 ul の方に v-else を使ってあげれば OK ですね。              </div><!-- /.cbody -->
+            </div><!-- /.cbody-liquid -->
+          </div><!-- /.caption-row -->
+                  <div class="caption-row" data-time="2:36">
+            <div class="cinfo"><span class="iconSound none"><a href="https://dotinstall.com/lessons/basic_vuejs_v2/43909#" class="cinfo-link">2:36</a></span></div>
+            <div class="cbody-liquid ">
+              <div class="cbody">
+                こうですね、ちゃんと上手くいっているのがわかるかと思います。              </div><!-- /.cbody -->
+            </div><!-- /.cbody-liquid -->
+          </div><!-- /.caption-row -->
+                  <div class="caption-row" data-time="2:40">
+            <div class="cinfo"><span class="iconSound none"><a href="https://dotinstall.com/lessons/basic_vuejs_v2/43909#" class="cinfo-link">2:40</a></span></div>
+            <div class="cbody-liquid ">
+              <div class="cbody">
+                このような仕組みにも慣れておいてください。              </div><!-- /.cbody -->
+            </div><!-- /.cbody-liquid -->
+          </div><!-- /.caption-row -->
+        
+        
+        <div id="caption_bottom_space" style="height: 531px;"></div>
+      </div><!-- /caption -->
+
+      </div><!-- /caption_wrapper -->
+<div id="caption_handle" style="display: none;"><i class="icon-align-justify icon-gray"></i></div>
+
+<script>
+(function() {
+    if (HMHM.cookie.get('display_caption') === null || HMHM.cookie.get('display_caption') == 1) {
+        $('#caption_wrapper').show();
+        $('#caption_handle').show();
+        $('#toggle_text_label').text('閉じる');
+    } else {
+        $('#caption_wrapper').hide();
+        $('#caption_handle').hide();
+        $('#toggle_text_label').text('表示する');
+    }
+})();
+</script>
+
+</div><!-- //video_section -->
+
+<ul class="nav nav-tabs" id="lesson_tabs">
+<li class="active">
+<a data-toggle="tab" href="https://dotinstall.com/lessons/basic_vuejs_v2/43909#summary" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Tabs&#39;, &#39;Click&#39;, &#39;lesson/show/movie&#39;);">この動画について<span class="s10">&nbsp;</span></a>
+</li>
+<li id="question_tab">
+<a data-toggle="tab" href="https://dotinstall.com/lessons/basic_vuejs_v2/43909#question" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Tabs&#39;, &#39;Click&#39;, &#39;lesson/show/faq&#39;);">よくある質問 <span class="s10">(0)</span></a>
+</li>
+<li id="source_code_tab">
+<a data-toggle="tab" href="https://dotinstall.com/lessons/basic_vuejs_v2/43909#source" id="tab_source" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Tabs&#39;, &#39;Click&#39;, &#39;lesson/show/source&#39;);">ソースコード<span class="s10">&nbsp;</span></a>
+</li>
+<li id="demo_tab">
+<a data-toggle="tab" href="https://dotinstall.com/lessons/basic_vuejs_v2/43909#demo" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Tabs&#39;, &#39;Click&#39;, &#39;lesson/show/demo&#39;);">デモ<span class="s10">&nbsp;</span></a>
+</li>
+</ul>
+
+<div class="tab-content" style="min-height:300px;">
+
+<div class="tab-pane active posr" id="summary">
+
+<div id="video_summary">
+<p itemprop="description" id="lesson_description">v-ifで条件分岐をすることで、ToDoが存在しなかった場合のUIを作り込んでいきます。</p>
+
+<ul id="lesson_summary">
+    <li class="lh18">v-show</li>
+    <li class="lh18">v-ifで条件分岐する際の注意点</li>
+</ul>
+
+</div><!-- /video_summary -->
+
+<p class="txr mb15"><a href="https://dotinstall.com/contact?ru=/lessons/basic_vuejs_v2/43909" rel="nofollow" class="caaa s11">このレッスンの問題を報告する</a></p>
+
+
+
+</div><!-- /movie -->
+
+<div id="question" class="tab-pane" style="margin-bottom:48px;">
+
+
+
+<p>Vue.js入門 にはよくある質問はありません。</p>
+<p>分からなかったところは画面右下の質問ボタンから先生に質問できます。 <img src="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/premium_tag.png" alt="PREMIUM"></p>
+
+
+
+
+
+
+<p><a href="https://dotinstall.com/q/new?ref=/lessons/basic_vuejs_v2/43909" class="btn di-btn-blue">この動画について質問する</a></p>
+<span class="remaining-times">2019年07月26日までにあと <span class="fwb">5</span> 回質問できます。</span>
+
+
+
+
+</div>
+<!-- question-tab -->
+
+<div id="material" class="tab-pane">
+
+
+</div><!-- /material -->
+
+<div id="source" class="tab-pane">
+
+
+<select class="source-select">
+<option id="source_select_default">ソースコードを選択してください</option>
+
+<option data-source="/MyVueApp/index.html" data-no-diff="0" data-is-readme="0">/MyVueApp/index.html</option>
+<option data-source="/MyVueApp/js/main.js" data-no-diff="0" data-is-readme="0">/MyVueApp/js/main.js</option>
+<option data-source="/MyVueApp/css/styles.css" data-no-diff="1" data-is-readme="0">/MyVueApp/css/styles.css</option></select>
+
+<div class="each-source-area-wrapper">
+
+<!-- /each_source_area -->
+
+<div class="each_source_area " data-source="/MyVueApp/index.html" data-is-readme="0">
+
+<div class="sourceBox">
+<div class="flr" style="margin-top:-3px;">
+<a href="https://dotinstall.com/lessons/basic_vuejs_v2/43909/diff?source=/MyVueApp/index.html" class="btn btn-small">自分のコードと比較する</a>
+</div>
+<div class="flr source_copy" style="margin:-3px 3px 0 0;">
+<button class="btn btn-small select-source-button">ソースコードを選択</button>
+</div><!-- /.source_copy -->
+<div class="flr" style="margin:-3px 3px 0 0;">
+<button class="btn btn-small toggle_diff">今回の変更点</button>
+</div>
+<span class="fwb source-file-path" title="/MyVueApp/index.html">/MyVueApp/index.html</span>
+</div><!-- /.sourceBox -->
+
+<div class="source-editor" id="source_editor_1" data-filename="/MyVueApp/index.html" data-no-diff="0">&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;My Vue App&lt;/title&gt;
+  &lt;link rel="stylesheet" href="css/styles.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;div id="app" class="container"&gt;
+    &lt;h1&gt;My Todos&lt;/h1&gt;
+    &lt;!-- &lt;ul&gt;
+      &lt;li v-for="(todo, index) in todos"&gt;
+        &lt;input type="checkbox" v-model="todo.isDone"&gt;
+        &lt;span :class="{done: todo.isDone}"&gt;{{ todo.title }}&lt;/span&gt;
+        &lt;span @click="deleteItem(index)" class="command"&gt;[x]&lt;/span&gt;
+      &lt;/li&gt;
+      &lt;li v-show="!todos.length"&gt;Nothing to do, yay!&lt;/li&gt;
+    &lt;/ul&gt; --&gt;
+    &lt;!-- &lt;ul&gt;
+      &lt;li v-if="todos.length" v-for="(todo, index) in todos"&gt;
+        &lt;input type="checkbox" v-model="todo.isDone"&gt;
+        &lt;span :class="{done: todo.isDone}"&gt;{{ todo.title }}&lt;/span&gt;
+        &lt;span @click="deleteItem(index)" class="command"&gt;[x]&lt;/span&gt;
+      &lt;/li&gt;
+      &lt;li v-else&gt;Nothing to do, yay!&lt;/li&gt;
+    &lt;/ul&gt; --&gt;
+    &lt;ul v-if="todos.length"&gt;
+      &lt;li v-for="(todo, index) in todos"&gt;
+        &lt;input type="checkbox" v-model="todo.isDone"&gt;
+        &lt;span :class="{done: todo.isDone}"&gt;{{ todo.title }}&lt;/span&gt;
+        &lt;span @click="deleteItem(index)" class="command"&gt;[x]&lt;/span&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;ul v-else&gt;
+      &lt;li&gt;Nothing to do, yay!&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;form @submit.prevent="addItem"&gt;
+      &lt;input type="text" v-model="newItem"&gt;
+      &lt;input type="submit" value="Add"&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+
+  &lt;script src="https://cdn.jsdelivr.net/npm/vue"&gt;&lt;/script&gt;
+  &lt;script src="js/main.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</div>
+
+<div class="source-editor-diff" id="source_editor_diff_1" data-filename=".diff"> &lt;!DOCTYPE html&gt;
+ &lt;html lang="ja"&gt;
+ &lt;head&gt;
+   &lt;meta charset="UTF-8"&gt;
+   &lt;title&gt;My Vue App&lt;/title&gt;
+   &lt;link rel="stylesheet" href="css/styles.css"&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+
+   &lt;div id="app" class="container"&gt;
+     &lt;h1&gt;My Todos&lt;/h1&gt;
+-    &lt;ul&gt;
++    &lt;!-- &lt;ul&gt;
+       &lt;li v-for="(todo, index) in todos"&gt;
+         &lt;input type="checkbox" v-model="todo.isDone"&gt;
+-        &lt;!-- &lt;span v-bind:class="{done: todo.isDone}"&gt;{{ todo.title }}&lt;/span&gt; --&gt;
+         &lt;span :class="{done: todo.isDone}"&gt;{{ todo.title }}&lt;/span&gt;
+         &lt;span @click="deleteItem(index)" class="command"&gt;[x]&lt;/span&gt;
+       &lt;/li&gt;
++      &lt;li v-show="!todos.length"&gt;Nothing to do, yay!&lt;/li&gt;
++    &lt;/ul&gt; --&gt;
++    &lt;!-- &lt;ul&gt;
++      &lt;li v-if="todos.length" v-for="(todo, index) in todos"&gt;
++        &lt;input type="checkbox" v-model="todo.isDone"&gt;
++        &lt;span :class="{done: todo.isDone}"&gt;{{ todo.title }}&lt;/span&gt;
++        &lt;span @click="deleteItem(index)" class="command"&gt;[x]&lt;/span&gt;
++      &lt;/li&gt;
++      &lt;li v-else&gt;Nothing to do, yay!&lt;/li&gt;
++    &lt;/ul&gt; --&gt;
++    &lt;ul v-if="todos.length"&gt;
++      &lt;li v-for="(todo, index) in todos"&gt;
++        &lt;input type="checkbox" v-model="todo.isDone"&gt;
++        &lt;span :class="{done: todo.isDone}"&gt;{{ todo.title }}&lt;/span&gt;
++        &lt;span @click="deleteItem(index)" class="command"&gt;[x]&lt;/span&gt;
++      &lt;/li&gt;
++    &lt;/ul&gt;
++    &lt;ul v-else&gt;
++      &lt;li&gt;Nothing to do, yay!&lt;/li&gt;
+     &lt;/ul&gt;
+     &lt;form @submit.prevent="addItem"&gt;
+       &lt;input type="text" v-model="newItem"&gt;
+       &lt;input type="submit" value="Add"&gt;
+     &lt;/form&gt;
+   &lt;/div&gt;
+
+   &lt;script src="https://cdn.jsdelivr.net/npm/vue"&gt;&lt;/script&gt;
+   &lt;script src="js/main.js"&gt;&lt;/script&gt;
+ &lt;/body&gt;
+ &lt;/html&gt;</div>
+
+</div><!-- /each_source_area -->
+
+<div class="each_source_area " data-source="/MyVueApp/js/main.js" data-is-readme="0">
+
+<div class="sourceBox">
+<div class="flr" style="margin-top:-3px;">
+<a href="https://dotinstall.com/lessons/basic_vuejs_v2/43909/diff?source=/MyVueApp/js/main.js" class="btn btn-small">自分のコードと比較する</a>
+</div>
+<div class="flr source_copy" style="margin:-3px 3px 0 0;">
+<button class="btn btn-small select-source-button">ソースコードを選択</button>
+</div><!-- /.source_copy -->
+<div class="flr" style="margin:-3px 3px 0 0;">
+<button class="btn btn-small toggle_diff">今回の変更点</button>
+</div>
+<span class="fwb source-file-path" title="/MyVueApp/js/main.js">/MyVueApp/js/main.js</span>
+</div><!-- /.sourceBox -->
+
+<div class="source-editor" id="source_editor_2" data-filename="/MyVueApp/js/main.js" data-no-diff="0">(function() {
+  'use strict';
+
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      newItem: '',
+      // todos: [{
+      //   title: 'task 1',
+      //   isDone: false
+      // }, {
+      //   title: 'task 2',
+      //   isDone: false
+      // }, {
+      //   title: 'task 3',
+      //   isDone: true
+      // }]
+      todos: []
+    },
+    methods: {
+      addItem: function() {
+        var item = {
+          title: this.newItem,
+          isDone: false
+        };
+        this.todos.push(item);
+        this.newItem = '';
+      },
+      deleteItem: function(index) {
+        if (confirm('are you sure?')) {
+          this.todos.splice(index, 1);
+        }
+      }
+    }
+  });
+})();</div>
+
+<div class="source-editor-diff" id="source_editor_diff_2" data-filename=".diff"> (function() {
+   'use strict';
+
+   var vm = new Vue({
+     el: '#app',
+     data: {
+       newItem: '',
+-      todos: [{
+-        title: 'task 1',
+-        isDone: false
+-      }, {
+-        title: 'task 2',
+-        isDone: false
+-      }, {
+-        title: 'task 3',
+-        isDone: true
+-      }]
++      // todos: [{
++      //   title: 'task 1',
++      //   isDone: false
++      // }, {
++      //   title: 'task 2',
++      //   isDone: false
++      // }, {
++      //   title: 'task 3',
++      //   isDone: true
++      // }]
++      todos: []
+     },
+     methods: {
+       addItem: function() {
+         var item = {
+           title: this.newItem,
+           isDone: false
+         };
+         this.todos.push(item);
+         this.newItem = '';
+       },
+       deleteItem: function(index) {
+         if (confirm('are you sure?')) {
+           this.todos.splice(index, 1);
+         }
+       }
+     }
+   });
+ })();</div>
+
+</div><div class="each_source_area no-diff" data-source="/MyVueApp/css/styles.css" data-is-readme="0">
+
+<div class="sourceBox">
+<div class="flr" style="margin-top:-3px;">
+<a href="https://dotinstall.com/lessons/basic_vuejs_v2/43909/diff?source=/MyVueApp/css/styles.css" class="btn btn-small">自分のコードと比較する</a>
+</div>
+<div class="flr source_copy" style="margin:-3px 3px 0 0;">
+<button class="btn btn-small select-source-button">ソースコードを選択</button>
+</div><!-- /.source_copy -->
+<div class="flr" style="margin:-3px 3px 0 0;">
+<button class="btn btn-small toggle_diff" disabled="">今回の変更点</button>
+</div>
+<span class="fwb source-file-path" title="/MyVueApp/css/styles.css">/MyVueApp/css/styles.css</span>
+</div><!-- /.sourceBox -->
+
+<div class="source-editor" id="source_editor_0" data-filename="/MyVueApp/css/styles.css" data-no-diff="1">body {
+  font-size: 16px;
+  font-family: Verdana, sans-serif;
+}
+
+.container {
+  width: 300px;
+  margin: auto;
+}
+
+#app h1 {
+  font-size: 16px;
+  border-bottom: 1px solid #ddd;
+  padding: 16px 0;
+}
+
+#app li {
+  line-height: 1.5;
+}
+
+#app input[type="text"] {
+  padding: 2px;
+}
+
+.command {
+  font-size: 12px;
+  cursor: pointer;
+  color: #08c;
+}
+
+#app ul {
+  padding: 0;
+  list-style: none;
+}
+
+#app li &gt; span.done {
+  text-decoration: line-through;
+  color: #bbb;
+}</div>
+
+
+</div><!-- /each_source_area -->
+
+
+</div><!-- /.each-source-area-wrapper -->
+
+<p class="txr"><a href="https://dotinstall.com/contact?ru=/lessons/basic_vuejs_v2/43909" rel="nofollow" class="caaa s11">このレッスンの問題を報告する</a></p>
+
+</div><!-- /source -->
+
+<div id="demo" class="tab-pane">
+
+
+
+<p>このプログラムのデモは別ウィンドウで開きます。</p>
+<p><a href="http://samples.dotinstall.com/basic_vuejs_v2/43909/MyVueApp/index.html" class="btn lh24" id="go_to_demo_btn" target="_blank" rel="nofollow" style="font-size:12px;">このプログラムのデモを見る</a></p>
+
+</div><!-- /demo -->
+
+</div><!-- /tab-content -->
+
+</div><!-- /itemprop -->
+
+</div><!-- /main -->
+
+<script>
+(function() {
+    // Sidebar has not been presented yet.
+    var SIDEBAR_WIDTH = 680;
+
+    if (Dotinstall.layout.mustBeSingleCol()) {
+        // シングルカラム
+        // window.innerWidth にすると 686px の時に少し大きくなってしまう
+        $('#main').width(
+            $(window).width() - Dotinstall.sizes.MAIN_HORIZONTAL_PADDING
+        );
+    } else {
+        // ダブルカラム
+        //console.log('__else', window.innerWidth, $(window).width());
+        $('#main').width(
+            $(window).width() - SIDEBAR_WIDTH - Dotinstall.sizes.MAIN_HORIZONTAL_PADDING
+        );
+    }
+
+    Dotinstall.resize.player.exec();
+
+    
+    $('#main').css({
+        visibility: 'visible'
+    });
+})();
+</script>
+
+<div id="sidebar" class="ready" style="left: 600px; right: auto; top: 55px; width: 680px; height: 794px;">
+
+<div id="sidebar_contents">
+
+
+
+<div class="sbox responsive-box hidden">
+
+<h2 class="text-ellipsis side-package-name">
+<a href="https://dotinstall.com/lessons/basic_vuejs_v2">
+Vue.js入門
+</a>
+</h2>
+
+<div class="sboxInner">
+<div class="clearfix">
+<div id="lesson_stat_graph">
+<div id="myStat" data-dimension="80" data-text="0%" data-width="12" data-percent="0" data-fgcolor="#5eb95e" class="circliful" style="width: 80px;"><span class="circle-text" style="line-height: 80px; font-size: 15px;">52%</span><canvas width="80" height="80"></canvas></div><!-- /myStat -->
+</div><!-- /lesson_stat_graph -->
+<div id="lesson_stat_summary" class="s12">
+<dl class="packageInfo">
+<dt>完了レッスン数</dt>
+<dd><span id="completed_lesson_count" class="s12b">9</span> / 17 回</dd>
+<dt>完了率</dt>
+<dd>
+<strong>
+<span id="complete_average">52</span>
+</strong> %
+</dd>
+<dt>あなたの閲覧数</dt>
+<dd><strong><span id="history_count">12</span></strong> 回</dd>
+</dl>
+</div><!-- /lesson_stat_summary -->
+</div><!-- /clearfix -->
+</div><!-- /sboxInner -->
+</div><!-- /sbox -->
+
+<!-- 学習メモ -->
+<div class="sbox responsive-box hidden">
+
+<a id="toggle_memo" class="sbox-toggle sbox-open">
+<i class="fa fa-chevron-up"></i>
+<i class="fa fa-chevron-down"></i>
+</a><!-- /sbox-toggle -->
+
+<h2>学習メモ</h2>
+<div id="memo_form" class="clearfix" style="">
+<div id="memo_body">
+<textarea class="codeFont" id="memo" placeholder="このメモは他の人には公開されません。"></textarea>
+</div>
+<div id="memo_footer">
+<button id="memo_save_button" class="btn btn-small lh24" onclick="HMHM.memo.save(true);">内容を保存する</button>
+<span class="sysMsg" id="memo_sysmessage">保存しました</span>
+</div>
+</div><!-- /memo_form -->
+
+</div><!-- /sbox -->
+
+<!-- この動画について -->
+<div class="sbox responsive-box hidden">
+<h2>この動画について</h2>
+<div class="sboxInner">
+<dl class="about-video">
+
+<dt>最終更新日</dt>
+<dd>
+2018年2月15日
+</dd>
+
+<dt>バージョン情報</dt>
+<dd>
+Vue.js 2.5.13</dd>
+
+<dt>関連キーワード <span class="s10">(6)</span></dt>
+<dd>
+<span class="tags"><a href="https://dotinstall.com/lessons/search#!/filter/%E5%9F%BA%E7%A4%8E%E8%AC%9B%E5%BA%A7">基礎講座 <span class="s10">(261)</span></a></span>
+<span class="tags"><a href="https://dotinstall.com/lessons/search#!/filter/%E4%B8%AD%E7%B4%9A%E8%80%85%E5%90%91%E3%81%91">中級者向け <span class="s10">(107)</span></a></span>
+<span class="tags"><a href="https://dotinstall.com/lessons/search#!/filter/HTML5">HTML5 <span class="s10">(24)</span></a></span>
+<span class="tags"><a href="https://dotinstall.com/lessons/search#!/filter/JavaScript">JavaScript <span class="s10">(126)</span></a></span>
+<span class="tags"><a href="https://dotinstall.com/lessons/search#!/filter/Vue.js">Vue.js <span class="s10">(3)</span></a></span>
+<span class="tags"><a href="https://dotinstall.com/lessons/search#!/filter/%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%82%A4%E3%83%88%E6%A7%8B%E7%AF%89">ウェブサイト構築 <span class="s10">(129)</span></a></span>
+</dd>
+
+</dl><!-- /.about-video -->
+</div><!-- /sboxInner -->
+</div><!-- /sbox -->
+
+</div><!-- /sidebar_contents -->
+
+</div><!-- /sidebar -->
+
+<div id="overlay_sidebar" class="fold" style="height: 794px; top: 53px;">
+
+<div id="overlay_sidebar_contents">
+
+<h2 class="text-ellipsis" id="side_package_name_header">
+<span id="fold_sidebar_box" class="flr">
+<i class="fa fa-chevron-left caaa flr" id="fold_sidebar"></i>
+</span>
+<i class="fa fa-chevron-right caaa" id="unfold_sidebar"></i>
+<a href="https://dotinstall.com/lessons/basic_vuejs_v2" id="side_package_name">
+  Vue.js入門
+</a>
+</h2>
+
+<!-- h2 id="video_list_header" class="ovs-list-header accordion" data-accordion="side_lessons" -->
+<h2 id="video_list_header" class="ovs-list-header">
+<label for="autoplay" class="autoplay flr">
+<input type="checkbox" id="autoplay">
+連続再生を有効にする
+</label>
+
+<i class="fa fa-play-circle ovs-list-header-icon" id="video_list_header_icon"></i>
+<span class="ovs-list-header-str" id="video_list_header_str">
+動画一覧
+<span class="s11">(17)</span>
+</span>
+</h2>
+
+<ul id="side_lessons">
+<li id="lesson_row_43901" class="text-ellipsis">
+<i class="fa fa-fw fa-play-circle "></i>
+#01
+<a href="https://dotinstall.com/lessons/basic_vuejs_v2/43901" class="lesson_title done">Vue.jsを使ってみよう</a>
+</li>
+<li id="lesson_row_43902" class="text-ellipsis">
+<i class="fa fa-fw fa-play-circle "></i>
+#02
+<a href="https://dotinstall.com/lessons/basic_vuejs_v2/43902" class="lesson_title done">Vue.jsの基本をおさえよう</a>
+</li>
+<li id="lesson_row_43903" class="text-ellipsis">
+<i class="fa fa-fw fa-play-circle "></i>
+#03
+<a href="https://dotinstall.com/lessons/basic_vuejs_v2/43903" class="lesson_title done">ToDoアプリを作ってみよう</a>
+</li>
+<li id="lesson_row_43904" class="text-ellipsis">
+<i class="fa fa-fw fa-play-circle "></i>
+#04
+<a href="https://dotinstall.com/lessons/basic_vuejs_v2/43904" class="lesson_title done">アプリの見た目を整えよう</a>
+</li>
+<li id="lesson_row_43905" class="text-ellipsis">
+<i class="fa fa-fw fa-play-circle "></i>
+#05
+<a href="https://dotinstall.com/lessons/basic_vuejs_v2/43905" class="lesson_title done">v-onでイベントを設定しよう</a>
+</li>
+<li id="lesson_row_43906" class="text-ellipsis">
+<i class="fa fa-fw fa-play-circle "></i>
+#06
+<a href="https://dotinstall.com/lessons/basic_vuejs_v2/43906" class="lesson_title done">ToDoを削除できるようにしよう</a>
+</li>
+<li id="lesson_row_43907" class="text-ellipsis">
+<i class="fa fa-fw fa-play-circle "></i>
+#07
+<a href="https://dotinstall.com/lessons/basic_vuejs_v2/43907" class="lesson_title done">完了状態を管理してみよう</a>
+</li>
+<li id="lesson_row_43908" class="text-ellipsis">
+<i class="fa fa-fw fa-play-circle "></i>
+#08
+<a href="https://dotinstall.com/lessons/basic_vuejs_v2/43908" class="lesson_title done">v-bindでクラスを操作しよう</a>
+</li>
+<li id="lesson_row_43909" class="text-ellipsis">
+<i class="fa fa-fw fa-play-circle current"></i>
+#09
+<a href="https://dotinstall.com/lessons/basic_vuejs_v2/43909" class="current lesson_title done">v-ifで条件分岐をしてみよう</a>
+</li>
+<li id="lesson_row_43910" class="text-ellipsis">
+<i class="fa fa-fw fa-play-circle "></i>
+#10
+<a href="https://dotinstall.com/lessons/basic_vuejs_v2/43910" class="lesson_title">算出プロパティを使ってみよう</a>
+</li>
+<li id="lesson_row_43911" class="text-ellipsis">
+<i class="fa fa-fw fa-play-circle "></i>
+#11
+<a href="https://dotinstall.com/lessons/basic_vuejs_v2/43911" class="lesson_title">完了したToDoを一括削除しよう</a>
+</li>
+<li id="lesson_row_43912" class="text-ellipsis">
+<i class="fa fa-fw fa-play-circle "></i>
+#12
+<a href="https://dotinstall.com/lessons/basic_vuejs_v2/43912" class="lesson_title">LocalStorageでデータを永続化させてみよう</a>
+</li>
+<li id="lesson_row_43913" class="text-ellipsis">
+<i class="fa fa-fw fa-play-circle "></i>
+#13
+<a href="https://dotinstall.com/lessons/basic_vuejs_v2/43913" class="lesson_title">LocalStorageからデータを読み出してみよう</a>
+</li>
+<li id="lesson_row_43914" class="text-ellipsis">
+<i class="fa fa-fw fa-play-circle "></i>
+#14
+<a href="https://dotinstall.com/lessons/basic_vuejs_v2/43914" class="lesson_title">Componentに機能をもたせよう</a>
+</li>
+<li id="lesson_row_43915" class="text-ellipsis">
+<i class="fa fa-fw fa-play-circle "></i>
+#15
+<a href="https://dotinstall.com/lessons/basic_vuejs_v2/43915" class="lesson_title">いいね！ボタンを実装してみよう</a>
+</li>
+<li id="lesson_row_43916" class="text-ellipsis">
+<i class="fa fa-fw fa-play-circle "></i>
+#16
+<a href="https://dotinstall.com/lessons/basic_vuejs_v2/43916" class="lesson_title">Propsで値を渡してみよう</a>
+</li>
+<li id="lesson_row_43917" class="text-ellipsis">
+<i class="fa fa-fw fa-play-circle "></i>
+#17
+<a href="https://dotinstall.com/lessons/basic_vuejs_v2/43917" class="lesson_title">$emitを使ってイベントを発火させよう</a>
+</li>
+</ul>
+
+</div><!-- /#overlay_sidebar_contents -->
+
+</div><!-- /#overlay_sidebar -->
+
+<div id="main_overlay" style="top: 53px; height: 794px; width: 1280px;"></div>
+
+</div><!-- /row -->
+</div><!-- /container -->
+
+<div id="resize_handle" class="resize-handle " style="top: 53px; left: 594px; height: 792px;"></div>
+
+
+<input type="hidden" id="package_id" value="439">
+<input type="hidden" id="lesson_id" value="43909">
+<input type="hidden" id="sequence" value="9">
+<input type="hidden" id="user_id" value="361751">
+<input type="hidden" id="user_name" value="mnitta">
+<input type="hidden" id="profile_image_url" value="">
+<input type="hidden" id="open_lesson_history" value="1">
+<input type="hidden" id="is_premium" value="1">
+<input type="hidden" class="one_time_token" name="one_time_token" value="c5d6affc69146941bb986804c8ea10ad00cd7d7c7a6e2922f1573011e0fe1d70">
+
+<div id="footer" class="no-margin-footer ">
+<div id="footer_inner_container" class="container wide fit-to-left">
+<div class="footer-contents" id="footer_logo">
+<div class="txc">
+<img src="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/footer_logo.png" width="190" height="190" alt="dotinstall">
+</div>
+</div><!-- /footer-contents -->
+<div class="footer-contents" id="footer_about">
+<h3>「ドットインストール」とは？</h3>
+<div style="padding:0 10px 0 20px">
+<p class="s12">3分動画でマスターできるプログラミング学習サービスです。</p>
+<p class="s12">あなたもプログラミングを始めてみませんか？</p>
+</div>
+</div><!-- /footer-contents -->
+<div class="footer-contents">
+<h3>サービスメニュー</h3>
+<ul>
+<li><a href="https://dotinstall.com/lessons">レッスン一覧</a></li>
+<li><a href="https://dotinstall.com/premium">プレミアム会員</a></li>
+<li><a href="https://dotinstall.com/business">法人向けライセンス</a></li>
+<li><a href="https://dotinstall.com/news">運営からのお知らせ</a></li>
+<li><a href="https://dotinstall.com/guide">プログラミング学習ガイド</a></li>
+<li><a href="https://dotinstall.com/help">ヘルプ</a></li>
+</ul>
+<h3>ご利用にあたって</h3>
+<ul>
+<li><a href="https://dotinstall.com/about">このサイトについて</a></li>
+<li><a href="https://dotinstall.com/terms">利用規約</a></li>
+<li><a href="https://dotinstall.com/privacy">プライバシーポリシー</a></li>
+<li><a href="https://company.dotinstall.com/" target="_blank">運営企業情報</a></li>
+<li><a href="https://company.dotinstall.com/recruit.html" target="_blank">採用情報</a></li>
+<li><a href="http://blog.dotinstall.com/post/183690977230/notice-on-use-of-contents" target="_blank">教材利用について</a></li>
+<li><a href="https://company.dotinstall.com/news/20150702.html" target="_blank">動画広告について</a></li>
+<li><a href="https://dotinstall.com/contact">お問い合わせ</a></li>
+</ul>
+</div><!-- /footer-contents -->
+<div class="footer-contents">
+<h3>学習支援ツール</h3>
+<ul>
+<li><a href="http://blog.dotinstall.com/post/139045656660/dotinstallpane" target="_blank">Dotinstall Pane</a></li>
+</ul>
+<h3>ソーシャルメディア</h3>
+<ul>
+<li><a href="http://facebook.com/dotinstall">Facebookページ</a></li>
+<li><a href="http://twitter.com/dotinstall">Twitter (@dotinstall)</a></li>
+<li><a href="https://note.mu/dotinstall">公式ブログ</a></li>
+</ul>
+<h3>更新情報</h3>
+<ul class="rss">
+<li><i class="fa fa-rss"></i> <a href="https://dotinstall.com/lessons.rss">新着レッスンRSS</a></li>
+<li><i class="fa fa-rss"></i> <a href="https://dotinstall.com/lessons/knowledge.rss">新着補足情報RSS</a></li>
+</ul>
+</div><!-- /footer-contents -->
+
+</div><!-- /container -->
+
+<p class="copyright">
+Copyright © 2011-2019 dotinstall.com. All Rights Reserved.
+</p>
+
+
+</div><!-- /footer -->
+
+<script src="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/packages_for_search.js"></script>
+
+            <script id="videojs_onready_script">
+(function(vjs) {
+    var HIGH_RES = 720;
+
+    var defaultResolution = HMHM.movie.videojs.getDefaultPlaybackQuality(HIGH_RES)
+      , defaultVoice      = HMHM.movie.videojs.getDefaultVoice('m')
+      , defaultSpeed      = HMHM.movie.videojs.getCurrentPlaybackSpeed(1.0)
+      , defaultVolume     = HMHM.movie.videojs.getDefaultVolume(0.9)
+      , defaultMuted      = HMHM.movie.videojs.getDefaultMuted()
+      , videoNum          = { "video/mp4": 0, "video/webm": 0 }
+      , forceMimeTypes    = ['video/mp4', 'video/webm']
+      , plugins = {};
+
+    // count video source type
+    $('video').find('source').each(function() {
+        videoNum[$(this).attr('type')]++;
+    });
+
+    // if MP4 only, IE8 and Opera need flash plugin
+    if (videoNum['video/mp4'] > 0 && videoNum['video/webm'] === 0) {
+        if (HMHM.navigator.isIE8 || HMHM.navigator.isOpera) {
+            if (!HMHM.navigator.isAvailableFlash()) {
+                $('#flash_warning').show();
+                return false;
+            }
+        }
+    }
+
+    plugins.Speed = {
+        available_speeds: [2, 1.8, 1.6, 1.4, 1.2, 1, 0.9, 0.8, 0.7],
+        default_speed: defaultSpeed
+    };
+
+    plugins.VoiceSelector = {
+        default_voice: defaultVoice
+    };
+
+    plugins.ResolutionSelector = {
+        force_types: forceMimeTypes,
+        default_res: defaultResolution
+    }
+
+    plugins.ProgressHelper = {
+    };
+
+    plugins.Card = {
+        comment_count: 0
+    };
+
+    vjs('videojs_player', {
+        inactivityTimeout: 200,
+        notSupportedMessage: '動画の読み込みに失敗しました。ブラウザをリロードしてみてください。',
+        plugins: plugins
+    }).ready(function() {
+        var tracking = $(this.el()).data('tracking');
+
+        $(this.el()).css('opacity', 1);
+        $(this.el().firstChild).css('opacity', 1);
+
+        if (HMHM.navigator.isIE8) {
+            setTimeout(function() {
+                HMHM.movie.videojs.player_.play();
+            }, 1);
+        }
+
+        this.on(['tap'], function(e) {
+            if (e.target.id === 'videojs_player_html5_api') {
+                if (this.paused()) {
+                    this.play();
+                } else {
+                    this.pause();
+                }
+
+                if (this.VoiceSelector) {
+                    this.VoiceSelector.hideMenu();
+                }
+            }
+        });
+
+        // hide liveDisplay
+        this.controlBar.liveDisplay.hide();
+
+        // set volume
+        this.volume(defaultVolume);
+
+        // set muted
+        this.muted(defaultMuted);
+
+        this.on('loadeddata', function() {
+            HMHM.movie.videojs.on.loadeddata();
+        });
+
+        this.on('play', function() {
+            HMHM.movie.videojs.on.play();
+
+            if (this.Speed) {
+                this.Speed.change(HMHM.movie.videojs.getCurrentPlaybackSpeed(1.0));
+            }
+
+            if (!HMHM.movie.captionAutoScroll) {
+                $('.caption-revert-auto-scroll').fadeIn();
+            }
+
+            if ($('#volume_alert_mask').is(':visible')) {
+                Dotinstall.player.alert.closeVolumeAlert('basic_vuejs_v2');
+            }
+
+            if (tracking === 1 && typeof ga !== 'undefined') {
+                ga('send', 'event', 'Player', 'Click', 'question/new');
+            }
+        });
+
+        this.on('pause', function() {
+            HMHM.movie.videojs.on.pause();
+
+            $('.caption-revert-auto-scroll').fadeOut();
+        });
+
+        this.on('ended', function() {
+            HMHM.movie.videojs.on.ended();
+        });
+
+        this.on('timeupdate', function() {
+            HMHM.movie.videojs.on.timeupdate();
+        });
+
+        this.on('changeRes', function() {
+            HMHM.movie.videojs.on.changeResolution(this.getCurrentRes());
+        });
+
+        this.on('changeVoice', function() {
+            HMHM.movie.videojs.on.changeVoice(this.getCurrentVoice());
+        });
+
+        this.on('change_playback_speed', function() {
+            HMHM.movie.videojs.on.changePlaybackSpeed(this.playbackRate());
+        });
+
+        this.on('volumechange', function() {
+            HMHM.movie.videojs.on.volumeChange(this.volume());
+        });
+
+        this.on('fullscreenchange', function() {
+            if ($(this.el()).hasClass('vjs-my-fullscreen')) {
+                this.removeClass('vjs-my-fullscreen');
+            } else {
+                this.addClass('vjs-my-fullscreen');
+                HMHM.movie.autoplay.logIfOn();
+            }
+
+            Dotinstall.ga.tracking('Player', 'Click', 'fullscreenToggle', this.isFullscreen() === true ? 1 : 0);
+        });
+
+        this.on('error', function(e) {
+            HMHM.movie.videojs.on.error(this.error(), this.currentSrc());
+        });
+
+        this.getChild('controlBar').getChild('muteToggle').on('click', function() {
+            // tracking
+            Dotinstall.ga.tracking('Player', 'Click', 'muteToggle', this.player().muted() === true ? 1 : 0);
+            HMHM.movie.videojs.on.muted(this.player().muted() === true ? 1 : 0);
+        });
+
+        // if #videojs_player element is clicked, move focus to play button
+        $('#videojs_player, .vjs-big-play-button').on('click', function(e) {
+            $('.vjs-play-control.vjs-control').focus();
+        });
+
+        // prevent scroll pressed space key if playing button is active.
+        $(document).keydown(function(e) {
+            if (/( |^)vjs-(playing|paused)( |$)/.test(document.activeElement.className)
+                && e.which === 32)
+            {
+                return false;
+            }
+        });
+
+        HMHM.movie.videojs.playerReady = true;
+        HMHM.movie.videojs.player_ = this;
+        HMHM.movie.ytplayer = HMHM.movie.videojs.player;
+
+        setTimeout(function() {
+            $('.vjs-comment-card').addClass('vjs-card-show');
+        }, 1);
+    });
+})(window.videojs);
+</script>
+      
+<!-- User Insight PCDF Code Start : dotinstall.com -->
+<script type="text/javascript">
+<!--
+var _uic = _uic ||{}; var _uih = _uih ||{};_uih['id'] = 50397;
+_uih['lg_id'] = '7b63b1ebab562bf401631c37be13b36c397fd73d';
+_uih['fb_id'] = '';
+_uih['tw_id'] = '';
+_uih['uigr_1'] = ''; _uih['uigr_2'] = ''; _uih['uigr_3'] = ''; _uih['uigr_4'] = ''; _uih['uigr_5'] = '';
+_uih['uigr_6'] = ''; _uih['uigr_7'] = ''; _uih['uigr_8'] = ''; _uih['uigr_9'] = ''; _uih['uigr_10'] = '';
+/* DO NOT ALTER BELOW THIS LINE */
+/* WITH FIRST PARTY COOKIE */
+(function() {
+var bi = document.createElement('scri'+'pt');bi.type = 'text/javascript'; bi.async = true;
+bi.src = ('https:' == document.location.protocol ? 'https://bs' : 'http://c') + '.nakanohito.jp/b3/bi.js';
+var s = document.getElementsByTagName('scri'+'pt')[0];s.parentNode.insertBefore(bi, s);
+})();
+//-->
+</script>
+<!-- User Insight PCDF Code End : dotinstall.com -->
+
+<!-- USERGRAM Attributes -->
+<script type="text/javascript">
+window.ugattr = window.ugattr || {};
+ugattr['serviceId'] = 'c4a038bf63e01907f640a6f7e7b58bcd1ff7cc8c';
+</script>
+<!-- USERGRAM Attributes end -->
+
+<!-- USERGRAM -->
+<script type="text/javascript">
+(function(){var a=window,b=document,c=a.usergram=a.usergram||[],d,e;
+c.l||(c.s=(new Date()).getTime(),c.l=!0,d=b.getElementsByTagName('script')[0],
+e=b.createElement('script'),e.type='text/javascript',e.async=true,
+e.src='//code.usergram.info/js/usergram.js',d.parentNode.insertBefore(e,d))})();
+
+window.usergram=window.usergram||[],window.ugattr=window.ugattr||{};
+usergram.push(['send','UgoHy1-1','pv',ugattr]);
+</script>
+<!-- USERGRAM end -->
+
+
+<script src="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/jquery.circliful.min.js"></script>
+<script src="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/highlight.pack.js"></script>
+
+
+<div class="q-float-board" id="q_float_board">
+
+<div class="q-float-board-header">
+<i class="flr fa fa-times q-float-close" id="q_float_close"></i>
+先生に質問してみよう <span class="s11">(試験運用中)</span>
+</div><!-- /.q-flaot-board-header -->
+
+<div class="q-float-board-body">
+
+<ul class="q-float-menu">
+
+
+
+<li class="do-question">
+
+
+<a href="https://dotinstall.com/q/new?ref=/lessons/basic_vuejs_v2/43909" id="go_to_question_new">
+<div class="q-float-menu-icon">
+<span class="fa-stack fa-lg">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+</span>
+</div><!-- /.q-flaot-menu-icon -->
+<div class="q-float-menu-item">
+この動画に関して質問する<br>
+<span class="remaining-times">2019年07月26日までにあと <span class="fwb">5</span> 回質問できます。</span>
+</div><!-- /.q-float-menu-item -->
+</a>
+
+
+</li><!-- /.do-question -->
+
+<li>
+<a href="https://dotinstall.com/home#!questions">
+<div class="q-float-menu-icon">
+<span class="fa-stack fa-lg">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-list fa-stack-1x fa-inverse"></i>
+<div class="q-float-notify-count"></div>
+</span>
+</div><!-- /.q-flaot-menu-icon -->
+<div class="q-float-menu-item">
+マイページで質問の一覧を確認する
+</div><!-- /.q-float-menu-item -->
+</a>
+</li>
+
+<li>
+<span class="wrapper">
+<div class="q-float-menu-icon">
+<span class="fa-stack fa-lg">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-search fa-stack-1x fa-inverse"></i>
+</span>
+</div><!-- /.q-flaot-menu-icon -->
+<div class="q-float-menu-item">
+<form action="https://dotinstall.com/search" class="form-inline no-margin" method="get">
+<input type="text" placeholder="よくある質問を検索する" name="q" id="q_float_search_text" class="span3">
+<input type="hidden" name="type" value="faq">
+<button class="btn" id="q_float_search_btn" disabled="">検索</button>
+</form>
+</div><!-- /.q-float-menu-item -->
+</span><!-- /wrapper -->
+</li>
+
+
+
+</ul><!-- /.q-float-menu-icon -->
+
+</div><!-- /.q-float-board-body -->
+
+</div><!-- /.q-float-board -->
+
+<div class="q-float-btn init close-float" id="q_float_btn" title="先生に質問してみよう">
+  <i class="fa fa-comments fa-stack-1x fa-inverse"></i>
+  <div class="q-float-notify-count"></div>
+</div>
+
+<script>
+!function() {
+    'use strict';
+
+    if (document.getElementById('q_float_search_text')) {
+        document.getElementById('q_float_search_text').addEventListener('keyup', function() {
+            document.getElementById('q_float_search_btn').disabled = this.value === '';
+        });
+    }
+}();
+</script>
+
+<script>
+$(function() {
+    var playPauseCount = 0;
+    var VIEW_CENTER_CARD_THRES = 18;
+    var displaySidebarResizeGuide = true;
+    var COOKIE_PATH = '/lessons/';
+    var EDITOR_AVAILABLE = false;
+
+    function polling() {
+              var endPoint = 'https://chat.dotinstall.com/production/user_polling/8bde0ac28ccdd1dcbc8574eeef57d7aedb6c446874f87256fd6aa2de7adfd2.json?ts=' + Date.now();
+      
+        $.get(endPoint)
+            .done(function(res) {
+                var cnt;
+
+                if (typeof res.updated_questions !== 'undefined') {
+                    cnt = res.updated_questions.length;
+
+                    if (cnt === 0) {
+                        $('.q-float-notify-count').hide();
+                    } else {
+                        if (cnt > 99) {
+                            cnt = 99;
+                        }
+
+                        $('.q-float-notify-count').text(cnt).show();
+                    }
+                }
+            });
+
+        setTimeout(polling, 5000);
+    }
+
+    function controlSidebarResizeGuideDisplay() {
+        if (Dotinstall.layout.mustBeSingleCol()) {
+            // シングルカラムでは非表示
+            $('#ui_guide').hide();
+        } else {
+            if (displaySidebarResizeGuide) {
+                $('#ui_guide').show();
+            }
+
+            if (!Dotinstall.resize.isResizable()) {
+                // リサイズできないサイズでは非表示
+                $('#ui_guide').hide();
+            }
+        }
+    }
+
+    function updateSidebarWidth(width) {
+        // Resize sidebar width
+        $('#sidebar').width(width);
+
+        // Update cookie and object value
+        Dotinstall.layout.updateSidebarSettings(COOKIE_PATH);
+    }
+
+    function adjustSideTerminals() {
+        var terms = document.getElementsByClassName('terminal');
+        var i;
+
+        for (i = 0; i < terms.length; i++) {
+            $(terms[i]).height($(terms[i].parentNode).height());
+            Dotinstall.layout.adjustSideTerminal(terms[i]);
+        }
+    }
+
+    function updateSidebarTop() {
+        Dotinstall.layout.updateSidebarTop(2);
+    }
+
+    /**
+     * ブラウザリサイズ時の調整
+     */
+    function onResizeWindow() {
+        var playerSize;
+
+/*
+        // 優先的に sidebar を幅を変更
+        if ($(window).width() < $('body').width()) {
+            updateSidebarWidth($('body').width() - $('#main').outerWidth());
+        } else {
+            updateSidebarWidth($(window).width() - $('#main').outerWidth());
+        }
+
+        if (
+            // sidebar は狭められないが main はまだ余裕あり
+            $('#sidebar').width() <= Dotinstall.sizes.sidebar.minWidth
+            && $('#main').width() > Dotinstall.sizes.main.minWidth
+        ) {
+            // main の幅を狭める
+            $('#main').width(
+                $(window).width()
+                - $('#sidebar').width()
+                - Dotinstall.sizes.MAIN_HORIZONTAL_PADDING
+            );
+        }
+*/
+
+        // main と sidebar のリサイズ
+        Dotinstall.layout.resizeMainAndSidebar();
+
+        if (Dotinstall.layout.mustBeSingleCol()) {
+            // シングルカラム
+            //console.log('=== Single Column ===');
+
+            $('#main').css({
+                width: 'auto'
+            });
+
+            $('#sidebar').css({
+                top: 'auto',
+                left: 'auto',
+                width: 'auto'
+            });
+
+        } else {
+            // 2カラム
+            //console.log('=== Double Column ===');
+
+            // main の右端にフィットするように sidebar を移動
+            $('#sidebar').offset({
+                left: $('#main').outerWidth()
+            });
+
+            $('#ui_guide_pointer').css({
+                left: $('#main').outerWidth() - $('#ui_guide_pointer').width() / 2 - 0.5,
+                right: 'auto'
+            });
+        }
+
+        Dotinstall.sizes.sidebar.OFFSET_LEFT = $('#sidebar').offset().left;
+
+        updateSidebarTop();
+
+        controlSidebarResizeGuideDisplay();
+
+        Dotinstall.responsive.topbar.apply(true);
+
+        // main の幅が変わる可能性があるので player サイズも変更
+        playerSize = Dotinstall.resize.player.exec();
+
+        // player のサイズが変わるので centerCard の位置も変更
+        Dotinstall.layout.adjustCenterCard(playerSize);
+
+        // パンくずリストの幅
+        Dotinstall.layout.adjustBreadcrumb(playerSize.width);
+
+        Dotinstall.layout.adjustLessonContentsHeight();
+
+        Dotinstall.layout.adjustMainAreaMinHeight();
+
+        Dotinstall.layout.adjustSidebarContentsHeight();
+
+        Dotinstall.layout.adjustEditorModalForIE11();
+
+        //console.log($('#main').outerWidth(), $('#sidebar').outerWidth());
+    }
+
+    Dotinstall.sizes.main.CONTENTS_RATIO = Dotinstall.layout.getMainContentsRatio();
+
+    if (Dotinstall.layout.mustBeSingleCol()) {
+        $('#sidebar').css({
+            left: 0,
+            right: 'auto'
+        });
+    } else {
+        $('#sidebar').css({
+            left: $('#main').outerWidth(),
+            right: 'auto'
+        });
+    }
+
+    updateSidebarTop();
+
+    Dotinstall.editor.detectTabsScrollable();
+
+    $(window).on('resize', function() {
+        onResizeWindow();
+    }).on('scroll', function(e) {
+        if (EDITOR_AVAILABLE) {
+            $('#sidebar').offset({
+                left: Dotinstall.sizes.sidebar.OFFSET_LEFT
+            });
+        }
+    });
+
+    onResizeWindow();
+
+    $('#sidebar').addClass('ready');
+
+    $('#overlay_sidebar').css({
+        top: $('#main').offset().top + 'px'
+    });
+
+    Dotinstall.resize.apply(
+        $('#resize_handle'),
+        $('#main'),
+        $('#sidebar'),
+        function() {
+            $('#resize_handle').addClass('on');
+        },
+        function() {
+            var playerSize;
+
+            Dotinstall.layout.updateSidebarSettings(COOKIE_PATH);
+
+            playerSize = Dotinstall.resize.player.exec();
+
+            Dotinstall.layout.adjustCenterCard(playerSize);
+
+            Dotinstall.layout.adjustBreadcrumb(playerSize.width);
+
+            if ($('#ui_guide').is(':visible')) {
+                displaySidebarResizeGuide = false;
+
+                $('#ui_guide').hide();
+
+                Dotinstall.uiGuide.cookie.sidebarResize();
+
+                                    Dotinstall.uiGuide.done('sidebar_resize');
+                            }
+
+            $('.source-editor').each(function(i) {
+                var editor;
+
+                if (typeof Dotinstall.sources[i] === 'undefined') {
+                    return;
+                }
+
+                editor = Dotinstall.sources[i];
+
+                $(this).height(editor.getSession().getScreenLength() * editor.renderer.lineHeight);
+                editor.resize();
+            });
+
+            $('.source-editor-diff').each(function(i) {
+                var editor;
+
+                if (typeof Dotinstall.diffs[i] === 'undefined') {
+                    return;
+                }
+
+                editor = Dotinstall.diffs[i];
+
+                $(this).height(editor.getSession().getScreenLength() * editor.renderer.lineHeight);
+                editor.resize();
+            });
+
+            adjustSideTerminals();
+
+            if (Dotinstall.editor.isEnabled()) {
+                Dotinstall.editor.resizeAll();
+            }
+
+            Dotinstall.sizes.main.CONTENTS_RATIO = Dotinstall.layout.getMainContentsRatio();
+
+            Dotinstall.sizes.sidebar.OFFSET_LEFT = $('#sidebar').offset().left
+
+            Dotinstall.editor.detectTabsScrollable();
+
+            Dotinstall.layout.adjustEditorModalForIE11();
+        },
+        function() {
+            $('#resize_handle').removeClass('on');
+        }
+    );
+
+    (function() {
+        var watcher = new Dotinstall.resize.watcher(document.getElementById('main_contents'));
+
+        watcher.watchHeightChange(function() {
+            Dotinstall.layout.adjustLessonContentsHeight();
+            Dotinstall.resize.setHandlerOffset();
+        });
+    })();
+
+    (function() {
+        var watcher = new Dotinstall.resize.watcher(document.getElementById('sidebar_contents'));
+
+        watcher.watchHeightChange(function() {
+            Dotinstall.layout.adjustLessonContentsHeight();
+            Dotinstall.resize.setHandlerOffset();
+        });
+    })();
+
+    controlSidebarResizeGuideDisplay();
+
+    if ($('#myStat').circliful) {
+        $('#myStat').circliful();
+    }
+
+  
+    
+
+    if ($('#user_id').val() !== '') {
+        HMHM.movie.isLogin = true;
+
+        // lesson history
+        $.ajax({
+            url: '/lesson/create_history',
+            type: 'POST',
+            data: {
+                user_id: $('#user_id').val(),
+                lesson_id: $('#lesson_id').val(),
+                one_time_token: $('input[name="one_time_token"]:first').val()
+            },
+            timeout: 15000
+        }).done(function(res) {
+            HMHM.movie.historyId = res.history_id;
+            HMHM.lesson.getPackageHistoryCount('basic_vuejs_v2');
+        });
+
+        HMHM.lesson.getPackageProgress(
+            'basic_vuejs_v2',
+            {
+                completed: function(lesson) {
+                    $('#lesson_row_' + lesson.id).find('a').addClass('done');
+                },
+                notCompleted: function(lesson) {
+                    $('#lesson_row_' + lesson.id).find('a').removeClass('done');
+                },
+                after: function(res) {
+                    $('#completed_lesson_count').text(res.completed_count);
+                    $('#complete_average').text(res.completed_rate);
+
+                    if ($('#myStat').length) {
+                        $('#myStat')
+                            .empty()
+                            .data('text', res.completed_rate + '%')
+                            .data('percent', res.completed_rate)
+                            .circliful();
+                    }
+                }
+            }
+        );
+
+        if (
+            $('#autoplay').is(':checked')
+            && $('#is_premium').val() === '1'
+            && $('video').length === 1
+        ) {
+            $.post('/lesson/prepare_next.json', {
+                user_id: $('#user_id').val(),
+                package_id: $('#package_id').val(),
+                sequence: $('#sequence').val(),
+                one_time_token: $('input[name="one_time_token"]:first').val()
+            });
+        }
+    }
+
+    $('.source-select').on('change', function() {
+        var selected = $(this).find('option:selected');
+
+        if (selected.index() === 0) {
+            $('.each_source_area').show();
+            $('#source_select_default').text('ソースコードを選択してください');
+        } else {
+            $('.each_source_area')
+                .hide()
+                .each(function() {
+                    if ($(this).data('source') === selected.data('source')) {
+                        $(this).show();
+                    }
+                });
+            $('#source_select_default').text('すべてのソースコードを表示する');
+        }
+    });
+
+    
+
+    
+  
+            $('.vjs-center-card').addClass('vjs-card-hidden-strongly');
+
+        $('video').on('click', function() {
+            playPauseCount++;
+
+            if (playPauseCount >= VIEW_CENTER_CARD_THRES) {
+                $('.vjs-center-card').removeClass('vjs-card-hidden-strongly');
+            }
+        });
+
+        $('.vjs-play-control').on('click', function() {
+            playPauseCount++;
+
+            if (playPauseCount >= VIEW_CENTER_CARD_THRES) {
+                $('.vjs-center-card').removeClass('vjs-card-hidden-strongly');
+            }
+        });
+    
+    $('#toggle_memo').click(function(e) {
+        e.preventDefault();
+
+        if ($('#memo_form').is(':visible')) {
+            HMHM.cookie.set('hide_memo', 1, 86400*90*1000, COOKIE_PATH);
+            $('#memo_form').slideUp();
+            $(this).addClass('sbox-close').removeClass('sbox-open');
+        } else {
+            HMHM.cookie.set('hide_memo', '', -86400*1000, COOKIE_PATH);
+            $('#memo_form').slideDown();
+            $(this).removeClass('sbox-close').addClass('sbox-open');
+        }
+    });
+
+    Dotinstall.overlaySidebar.enable();
+
+    });
+
+HMHM.repeat(100, HMHM.movie.monitorCurrentTime);
+</script>
+
+<script src="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/caption.js"></script>
+
+<script src="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/ace.js"></script>
+<script src="./#09 v-ifで条件分岐をしてみよう _ Vue.js入門 - プログラミングならドットインストール_files/ext-modelist.js"></script>
+<script>
+$(function() {
+    'use strict';
+
+    if (typeof window.Dotinstall === 'undefined') {
+        window.Dotinstall = {};
+    }
+
+    Dotinstall.sources = [];
+    Dotinstall.diffs   = [];
+
+    function applyEditor($elem) {
+        var editor;
+
+        editor = ace.edit($elem.attr('id'));
+        editor.getSession().setUseSoftTabs(false);
+        editor.getSession().setUseWorker(false);
+        editor.getSession().setUseWrapMode(true);
+        editor.getSession().setOptions({
+            indentedSoftWrap: false
+        });
+
+        editor.setFontSize(13);
+        editor.container.style.lineHeight = 1.4;
+        editor.renderer.updateFontSize();
+
+        $elem.height(editor.getSession().getScreenLength() * editor.renderer.lineHeight);
+        editor.resize();
+
+        editor.setSelectionStyle('text');
+        editor.setReadOnly(true);
+        editor.setShowPrintMargin(false);
+        editor.setHighlightActiveLine(false);
+        editor.commands.removeCommand('find');
+        editor.commands.removeCommand('showSettingsMenu');
+
+        editor.setTheme('ace/theme/chrome');
+
+        (function() {
+            var modelist = ace.require('ace/ext/modelist');
+            var mode = modelist.getModeForPath($elem.data('filename')).mode;
+
+            if (
+                $elem.data('filename') !== '.diff'
+                && $elem.parents('.each_source_area').data('is-readme') === 1
+            ) {
+                mode = 'ace/mode/ruby';
+            }
+
+            editor.getSession().setMode(mode);
+        })();
+
+        return editor;
+    }
+
+    $('#tab_source').on('shown', function() {
+        $('.source-editor').each(function(i) {
+            if (typeof Dotinstall.sources[i] !== 'undefined') {
+                return;
+            }
+
+            Dotinstall.sources[i] = applyEditor($(this));
+
+            /*if ($(this).data('no-diff') === 1) {
+                $(this).hide();
+            }*/
+        });
+
+        $('.source-editor-diff').each(function(i) {
+            var editor;
+
+            if (typeof Dotinstall.diffs[i] !== 'undefined') {
+                return;
+            }
+
+            editor = applyEditor($(this));
+
+            editor.renderer.on('afterRender', function() {
+                $(editor.renderer.container)
+                    .find('.ace_constant').each(function() {
+                        $(this).parents('.ace_line_group').children('.ace_line').addClass('diff_added');
+                    })
+                .end()
+                    .find('.ace_function').each(function() {
+                        $(this).parents('.ace_line_group').children('.ace_line').addClass('diff_removed');
+                    });
+            });
+
+            Dotinstall.diffs[i] = editor;
+
+            $(this).hide();
+        });
+    });
+});
+</script>
+
+
+
+
+<div id="resize_mask" class="resize-mask"></div></body></html>

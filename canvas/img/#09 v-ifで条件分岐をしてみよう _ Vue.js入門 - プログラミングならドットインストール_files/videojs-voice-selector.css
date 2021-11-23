@@ -1,0 +1,46 @@
+/* Position the button */
+.vjs-control.vjs-voice-button {
+    float: left;
+    line-height: 3em;
+    width: 9em;
+}
+
+.vjs-default-skin .vjs-voice-button .vjs-menu {
+    left: 5em;
+    border-left-width: 0;
+    border-right-width: 0;
+}
+
+.vjs-default-skin .vjs-voice-button .vjs-menu .vjs-menu-content {
+    box-sizing: border-box;
+    width: 9.1em;
+}
+
+.vjs-default-skin .vjs-voice-button .vjs-menu .vjs-menu-content .vjs-menu-item {
+    padding: .4em 0;
+}
+
+.vjs-current-voice {
+    font-size: 1.1em;
+}
+
+.vjs-current-voice::before {
+    font-family: VideoJS;
+    content: '\e00c';
+    margin-right: 6px;
+}
+
+/* Don't show hover effects on title */
+ul li.vjs-menu-title.vjs-voice-menu-title:hover {
+    cursor: default;
+    background-color: transparent;
+    color: #ccc;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.vjs-voice-button:hover,
+.vjs-voice-button.on {
+    background: rgba(60, 60 , 60, 0.8) !important;
+}
