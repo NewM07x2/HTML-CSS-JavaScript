@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS</title>
+</head>
+<style>
+  .container {
+    height: 300px;
+  }
+
+  h1 {
+    padding: 0;
+    margin: 0;
+    width: 600px;
+    margin: 0px auto;
+    border: 2px solid #ccc;
+    border-bottom: none;
+    padding: 10px;
+    /* background-color: teal; */
+    s
+  }
+
+  .row {
+    border: 2px solid #ccc;
+    /* background-color: teal; */
+    height: 250px;
+    width: 600px;
+    margin: 0px auto;
+    padding: 10px;
+  }
+
+  textarea {
+    width: 280px;
+  }
+
+  .event-log {
+    padding: 10px;
+  }
+
+  .btn {
+    display: inline-flex;
+    position: relative;
+    width: 100px;
+    left: 80%;
+
+  }
+
+  .btn .controls {
+    margin-right: 5px;
+  }
+</style>
+
+<body>
+
+  <div class="container">
+    <h1>memo</h1>
+    <div class="row">
+      <div class="event-log">
+        <textarea readonly id="contents" class="event-log-contents" rows="8" cols="30"></textarea>
+        <textarea id="contents2" class="event-log-contents2" rows="8" cols="30" placeholder="追記分"></textarea>
+      </div>
+      <div class="btn">
+        <div class="controls">
+          <button id="reload" type="button">追加</button>
+        </div>
+        <div class="delete">
+          <button id="delete" type="button">削除</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <script>
+
+    const reload = document.querySelector('#reload');
+    const remove = document.querySelector('#delete');
+    // const log_querySelector = document.querySelector('.event-log-contents');
+    const log = document.getElementById("contents");
+    const log2 = document.getElementById("contents2");
+
+
+    reload.addEventListener('click', () => {
+
+      var log_text = log.value;
+      var log_text2 = log2.value;
+      localStorage.setItem('log_text', log_text);
+      localStorage.setItem('log_text2', log_text2);
+      if (log_text2 !== '')
+      {
+        window.setTimeout(() => {
+          window.location.reload(true);
+        }, 20);
+      }
+
+    });
+
+    remove.addEventListener('click', () => {
+      var log_text = '';
+      var log_text2 = '';
+
+      localStorage.setItem('log_text', log_text);
+      localStorage.setItem('log_text2', log_text2);
+
+      window.setTimeout(() => {
+        window.location.reload(true);
+      }, 20);
+    });
+
+    window.addEventListener('load', () => {
+      log_text = localStorage.getItem("log_text");
+      log_text2 = localStorage.getItem("log_text2")
+      const n = '\n';
+      if (log_text == '')
+      {
+        log.value = log_text + log_text2;
+      } else
+      {
+
+        log.value = log_text + n + log_text2;
+      }
+    });
+
+  </script>
+</body>
+
+</html>
