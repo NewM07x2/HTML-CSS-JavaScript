@@ -1,0 +1,1402 @@
+/*{
+レスポンシブの基本系メモ
+common系は分けておいた方が良い。
+基本的には画面サイズがあがっていくに連れてCSSを書き加えていくほうが良い。
+CSShaあとから読み込んだものが上書きされて行く。
+よって画面サイズが小さいときに非表示、大きくなった場合に表示したい場合には、
+再度指定してやる必要がある
+
+
+} */
+
+/* common */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video,
+.container,
+.row {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font: inherit;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+#header:before{
+	content: "";
+	display: block;
+	position: absolute;
+}
+body{
+  margin: 0px;
+  padding: 0px;
+}
+li{
+  list-style: none;
+}
+row{
+  padding: 0px;
+  margin: 0px;
+}
+ol, ul {
+  list-style: none;
+} 
+
+a{
+  text-decoration: none;
+}
+
+/* header */
+#header {
+  position: relative;
+  padding: 5px 0 0 0;
+  background-color: #fff;
+}
+#header:before {
+  width: 100%;
+  height: 5px;
+  top: 0;
+  left: 0;
+  background-color: #005;
+  border-bottom: 1px solid #d7000f;
+}
+
+
+/* 画像のセンター配置 */
+.header_center{
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  margin: 20px auto 0px;
+}
+
+#headerMenuClose img{
+  width: 25px;
+  height: auto;
+  position: absolute;
+  top: 10px;
+  left: 94%;
+}
+
+.close{
+  background-color: beige;
+}
+
+@media screen and (max-width: 480px){
+   /* 480px以下 の画面サイズにCSSを適応  */
+
+}
+
+
+@media screen and (max-width: 766px){
+   /* 720px以下の画面サイズにCSSを適応  */
+   /* 画像の大きさ */
+  header{
+    height: 120px;
+  }
+  .header_center{
+    height: auto;
+    width: 150px;
+  }
+  .header_center img {
+     width: 100%; 
+  }
+  #header #headerContent #headerMenu {
+    width: 100%;
+    display: none;
+  }
+
+  #header #headerContent #headerMenu h2 {
+    position: relative;
+    display: block;
+    background-color:#f1f4ff;
+    font-size: 18px;
+    padding: 10px;
+    margin: 0px;
+  }
+  #header #headerContent #headerSearch {
+    position: static;
+  }
+  
+  #open_btn {
+    width: 130px;
+    cursor: pointer;
+    float: left;
+    position: absolute;
+    top:  50px;
+    right: 150px;
+    margin-top:-10px;
+    width: 30px;
+    transition: all 1000ms 0s ease;
+  }
+  #open_btn .btn {
+    display: block;
+    width: 24px;
+    height: 20px;
+    position: absolute;
+    left: 450%;
+    top: -20px;
+    background-color: white;
+    border: white 1px solid;
+  }
+  #open_btn .btn span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #3c3c3c;
+    position: absolute;
+    left: 0;
+    transform-origin: 50% 50% 0;
+  }
+  #open_btn .btn .top {
+    top: 0;
+    /* transition: top 200ms ease 0s, background 200ms ease 0s, transform 200ms ease 0s; */
+  }
+  #open_btn .btn .mid {
+    top: 8px;
+    /* transition: background 200ms ease 0s, transform 200ms ease 0s; */
+  }
+  #open_btn .btn .btm {
+    top: 16px;
+    /* transition: top 200ms ease 0s, background 200ms ease 0s, transform 200ms ease 0s; */
+  }
+  #utilityBtn{
+    display: none;
+  }
+  #header #headerContent #headerSearch form {
+    padding: 10px 15px;
+    float: none;
+    border-bottom: 1px solid #ccc;
+    background-color: #f7f8f8;
+    height: 60px;
+    font-size: 14px;
+  }
+  #header #headerContent #headerSearch form input[type="text"] {
+    padding: 10px 10px;
+    width: 95%;
+    height: 38px;
+    float: none;
+    border-bottom: 1px solid #ccc;
+    background-color: #f7f8f8;
+    position:absolute
+  }
+  #header #headerContent #headerSearch form input[type="image"] {
+    padding: 10px;
+    position: relative;
+    top: 5px;
+    left:93%; 
+  }
+  .left ul ,
+  .right ul{
+    margin: 0px;
+    }
+  .left ul li ,
+  .right ul li {
+    padding: 15px 30px 15px 10px;
+    border-bottom: #bbb 1px solid;
+  }
+  .left ul li a,
+  .right ul li a{
+    position: relative;
+    display: block;
+    color: #245dc1;
+    font-size: 15px;
+    text-decoration-line: underline;
+  }
+  #headerContent .utility ul li {
+    border-top: 1px solid #ccc;
+  } 
+
+  /* nav */
+  #globalNav {
+    position: relative;
+    top:65px;
+    background-color: #000055;
+    width: 100%;
+    color:white;
+  }
+  #globalNav .wrap{
+    height:  50px;
+  }
+  #globalNav .wrap ul{
+    margin: 0px;
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content:space-around; 
+  }
+  #globalNav .wrap ul li {
+    padding: 12px;
+    text-align: left;
+    width: 100%;
+    font-size: 9px;
+    /* vertical-align: middle; */
+  }
+  #globalNav .wrap ul li .inner {
+    padding: 5px;
+    /* vertical-align: middle; */
+  }
+  #globalNav .wrap ul li a {
+    display: block;
+    color: #fff;
+    width: 100%;
+  }
+  /* 縦線 */
+  #about{
+    border-left: #fff 1px solid;
+    border-right: #fff 1px solid;
+  }
+
+  /* 中心画像 */
+  #topPage{
+    width: 100%;
+    position: relative;
+    top:0px;
+  }
+  #topPage .inner{
+    position: relative;
+  }
+  #topPage .inner #pcimgList{
+    position: relative;
+    margin: 0;
+  }
+  #topPage .inner #pcimgList li a img{
+    width: 100%;
+  }
+  
+  /* ボタン */
+  .prev_next_btn{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    position: absolute;
+    top: 50%;
+  }
+  .prev_next_btn .prev,
+  .prev_next_btn .next{
+    margin: 0;
+    padding: 0;
+    height: 25px;
+    width:25px;
+    display: block;
+  }
+  .prev_next_btn .prev{
+    width: 100%;
+  }
+
+  .prev_next_btn p a img{
+    height: 25px;
+    width: 25px;
+  }
+
+
+
+
+  /* お知らせ */
+  .importantInfo{
+    z-index: 100;
+    position: relative;
+    width: 100%;
+    border-top: #f7f8f8 2px solid;
+    margin: 0;
+    padding: 0;
+  }
+  #info{
+    padding: 10px;
+    background-color: #E17D77;
+    color: white;
+    font-size: 12px;
+    height: 35px;
+    font-weight:normal;
+    text-align: center;
+  }
+  .importantInfo dl dd {
+    padding: 0 10px;
+  }
+  .listNewsBa > li:first-child {
+    margin-top: 0;
+  }
+  .listNewsBa > li {
+    width: 100%;
+    margin: 10px 0 20px;
+  }
+  .importantInfo dl {
+    width: 100%;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+  }
+  .purposePanel{
+    position: relative; 
+    padding: 10px 10px 20px;
+    border: none;
+  }
+  .purposePanel ul{
+    
+  }
+  .purposePanel ul li{
+    border: #bbb 1px solid;
+    width: 47%;
+    height: 175px;
+  }
+  .purposePanel ul li:nth-child(odd) {
+    float: left;
+    margin: 0 5px 12px 10px;
+  }
+  .purposePanel ul li:nth-child(even) {
+    float: right;
+    margin: 0 10px 12px 5px;;
+  }
+  .purposePanel ul li a span{  
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 15px 0 5px
+  }
+  /* 画像の中央配置 */
+  .purposePanel ul li a img{
+    width: 50%;
+    height: auto;
+    position: relative;
+    top: 5px;
+    left: 75px;
+  }
+  /* centerBlockMenu */
+  .centerBlockMenu{
+    position: relative;
+    margin-top: 10px;
+    padding: 0 10px;
+    background-color: #fff;
+    border: none;
+    box-shadow: none;
+  }
+  .centerBlockMenu ul{
+      width: 100%;
+  }
+  .centerBlockMenu ul li {
+    display: block;
+    padding: 10px;
+    background-color: #f7f8f8;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+  }
+  .centerBlockMenu ul li a {
+    color: #3c3c3c;
+  }
+  .centerBlockMenu ul li:first-child {
+    border-top: 1px solid #ccc;
+  }
+
+  /* スマホ画面時には出力しない。 */
+  .centerBlockArea .tabBaDragon{
+    display: none;
+  }
+
+  .centerBlockArea{
+    width: 100%;
+  }
+  .centerBlockArea ul{
+    margin: 0px;
+    padding: 0px;
+  }
+  .centerBlockArea ul li {
+    margin: 10px 0  ;
+    padding: 0px;
+  }
+  .centerBlockArea ul li a{
+    margin: 0px;
+    padding: 0px;
+  }
+  .tabBa{
+    margin: 0 5px;
+  }
+  .tabBa dt {
+
+  }
+  .tabBa > dt > a {
+    position: relative;
+    display: block;
+    padding: 16px 32px 12px 20px !important;
+      border-radius: 2px;
+    color: #333;
+    border: 1px solid #fff;
+    width: auto !important;
+    text-align: left !important;
+    height: auto;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
+    font-size: 14px;
+    font-weight: normal;
+  }
+  .centerBlockArea .tabBa .crrent{
+    display: block !important;
+  }
+  .tabBa dt .info{
+    text-decoration: none;
+  }
+
+  .listImgFeature {
+    width: 100%;
+    padding: 20px 10px 0;
+    margin: 0;
+    text-align: center;
+    background-color: #f0ede5;
+  }
+  .listImgFeature ul{
+    display: flex;
+  }
+  .listImgFeature ul li{
+    display: block;
+    padding: 1%;
+  }
+  .listImgFeature ul li a{
+    width: 100%;
+    height: auto;
+    display: block;
+    border-top: #000055 2px solid;
+  }
+  .listImgFeature ul li img{
+    width: 100%;
+    height: auto;
+  }
+  .listImgFeature ul li p{
+    display: block;
+    margin: 0px;
+    padding: 5px 10px 5px 15px;
+    text-align: left;
+    height: 30px;
+    font-size: 8px;
+    color: #333;
+    background-color: white;
+  }
+
+  ＃footerInfoArea{
+    background-color: white;
+  }
+
+  .timeInfoWrap{
+    margin: 8px;
+    padding: 8px;
+    border: #bbb 1px solid;
+  }
+  .timeInfoWrap .timeInfo {
+    margin: 0px;
+    padding: 5px;
+  }
+  .timeInfoWrap .timeInfo dd {
+    color: #3c3c3c;
+    font-size: 12px;
+  }
+  .timeInfoWrap .timeInfo dt {
+    color: #3c3c3c;
+    font-size: 16px;
+    font-weight: normal;
+  }
+
+  .timeInfoWrap .timeInfo .sinryoReception,
+  .timeInfoWrap .timeInfo .sinryoStopDay
+   {
+    margin: 0px;
+    padding: 5px;
+    border-top: #bbb 1px solid;
+  }
+  .btnBa{
+    margin: 0 10px 10px;
+  }
+  .btnBa a ,
+  .accessInfo div a{
+    position: relative;
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    background-color: #031763;
+    text-align: center;
+    padding: 15px 0;
+    font-weight: bold;
+}
+
+  #footerInfoArea .content .accessInfo div a:before, #footerInfoArea .content .receptionInfo .reserve .btnBa a:before {
+    background-image: url(img/start.png);
+    background-repeat: no-repeat;
+    height: 17px;
+    width: 18px;
+    /* background-position: 0 -51px; */
+  }
+  
+  /* スマホ画面の場合、折り返しをなくす */
+  .spNone{
+    display: none;
+  }
+  
+  .accessInfo div{
+    display: none;
+  }
+  .accessInfo .aboutAccess{
+    margin: 0 10px 10px;
+    background-color: #383838;
+    font-weight: bold;
+    display: block;
+    padding: 15px 0;
+    color: white;
+    text-align: center;
+  }
+
+  .accessInfo .doubleDragon li a{
+    background-color: #ff9f1a;
+    text-decoration: none;
+  }
+  .accessInfo .doubleDragon .first{
+    margin-top: 10px;
+  }
+
+  #footerBnrAreaWrap{
+    background-color: #fff;
+    padding-bottom: 10px;
+    margin: 20px 10px;
+    
+  }
+  .bnrCarousel {
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
+    background-color: #f7f8f8;
+  }
+  .inner ul li img{
+    width: 100%;
+  }
+  .img_center{
+    width:200px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    margin: 0px 0px;
+    
+  }
+  #img_center{
+    position: absolute;
+    top: 0;
+    left:  35%;
+    margin-top: 0px;
+    border: 1px gray solid;
+  }
+
+  .bnrCarousel p{
+    position: relative;
+  }
+
+  .fbtn a img{
+    height: 25px;
+    width :25px;
+  }
+  .fbtn{
+    height: 25px;
+    width :100%;;
+
+  }
+  .fbtn .prev{
+    float: left;
+    position: relative;
+    top:12px;
+
+  }
+  .fbtn .next{
+    float: right;
+    position: relative;
+    top:-12px;
+  }
+  
+  /* footer */
+  #footer{
+    width: auto;
+    height: 100px;
+    background-color: #000055;
+  }
+  #footerContent{
+    padding: 20px 10px 10px;
+  }
+  #footerContent ul{
+    display: flex;
+    margin-bottom: 10px;
+  }
+
+  #footerContent ul li{
+    font-size: 12px;
+  }
+  #footerContent ul li a{
+    color: white;
+  }
+  #footer #footerContent ul li {
+    border-right: 1px solid #fff;
+    border-left: none;
+    padding: 0 12px 0 0;
+    margin: 0 12px 12px 0;
+}
+
+  #footerCopy{
+    font-size: 12px;
+    color:white;
+    position: absolute;
+    right: 0;
+  }
+  .container{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    max-width:none;
+  }
+  .row{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+}
+
+
+
+
+
+
+@media screen and ( min-width:767px) {
+   /* 767px以上の画面サイズにCSSを適応  */
+  /* SP用のOPENメニューは決しておく */
+  header {
+    height: 175px;
+  }
+
+  #open_btn .btn {
+    display: none;
+  }
+   #header #headerContent #headerMenu  {
+    display: block;
+  }
+   #header #headerContent #headerMenu h2 {
+    display: none;
+  }
+  /* 検索フォーム */
+  #header #headerContent #headerSearch{
+    position: absolute;
+    top: 65px;
+    height: 50px;
+  }
+  #header #headerContent #headerSearch #headerSearchText{
+    height: 45px;
+  }
+  #header #headerContent #headerSearch form input[type="text"] {
+    width: 250px;
+    height: 75px;
+    border: 1px solid #bbb;
+    border-radius: 2px;
+    background-clip: padding-box;
+    background-color: #fff;
+    padding: 0 30px 0 10px;
+    position: relative;
+  }
+  #header #headerContent #headerSearch form input[type="image"] {
+    padding: 5px;
+    position: relative;
+    top: 8px;
+    left: -15%;
+  }
+  /* 画像の大きさ */
+  .header_center{
+    height: auto;
+    width: 200px;
+  }
+  .header_center img {
+     width: 100%; 
+  }
+
+  /* left */
+  #header #headerContent .left {
+    float: left;
+    margin-left: 10px;
+  }
+
+/* utility */
+/* 全体の修正 */
+.utility{
+    display: flex;
+    font-size: 11px;
+    margin-top: 15px;
+    padding: 10px;
+  }
+.utility li a{
+  text-decoration: underline;
+  color: #777;
+  }
+  /* 区切り線 */
+  .li2 ,.li3{
+    margin-left: 6px;
+    padding-left: 6px;
+    border-left: 1px solid #e1e1e1;
+  }
+
+  /* right */
+  #header #headerContent .right {
+    float: right;
+    margin-right: 10px;
+  }
+  #header #headerContent #utilityBtn {
+    margin-top: 12px;
+  }
+  #header #headerContent #utilityBtn dl:first-child {
+    margin-left: 0;
+  }
+  #header #headerContent #utilityBtn dl dt {
+    color: #777;
+    font-size: 11px;
+    text-align: left;
+  }
+  #header #headerContent #utilityBtn li a {
+    display: block;
+    padding: 13px 0;
+    border: 1px solid #bbb;
+    border-radius: 2px;
+    background-color: #fff;
+    color: #656565;
+    font-size: 13px;
+    width: 40px;
+    text-align: center;
+    line-height: 1;
+    text-decoration: none;
+  }
+
+  #header #headerContent #utilityBtn dl dt {
+    color: #777;
+    font-size: 11px;
+    padding-right: 5px;
+    
+    text-align: left;
+  }
+  /* 横並びにする */
+  #utilityBtn{
+    display: flex;
+  }
+  #utilityBtn dl{
+    display: flex;
+  }
+  #utilityBtn dd{
+    display: flex;
+  }
+  #utilityBtn dl dd ul{
+    display: flex;
+  }
+  /* 高さの微調整 */
+  #utilityBtn dl .size{
+    padding-top: 5%;
+  }
+  #utilityBtn dl .change{
+    padding-top: 12px;
+  }
+
+  /* nav */
+  #globalNav {
+    position: relative;
+    top:120px;
+    background-color: #000055;
+    width: 100%;
+    color:white;
+  }
+  #globalNav .wrap{
+    height:  50px;
+  }
+  #globalNav .wrap ul{
+    margin: 0px;
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content:space-around; 
+  }
+  #globalNav .wrap ul li {  
+    text-align: center;
+    width: 100%;
+    height: 100%;
+  }
+  #globalNav .wrap ul li a {
+    display: block;
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    padding-top: 10px;
+    text-decoration: none;
+  }
+  #globalNav .wrap ul li a:hover{
+     background-color: #cc0000;
+  }
+  /* 縦線 */
+  #about{
+    border-left: #fff 1px solid;
+    border-right: #fff 1px solid;
+  }
+  #pcimgList{
+    margin: 0px;
+  }
+  /* 中心画像 */
+  .pcimg{
+    width: 100%;
+    top: 60px;
+    left: 0px;
+  }
+  /* next prevボタン */
+  .prev_next_btn{
+    position: absolute;
+    top: 13%;
+    display: flex;
+    width: 100%;
+  }
+  .prev_next_btn p {
+    margin: 0;
+  }
+  .prev_next_btn .prev {
+    display: block;
+    width: 100%;
+  }
+  .prev_next_btn .next{
+    display: block;
+  }
+  .prev_next_btn .prev a,.prev_next_btn .next a {
+    display: block;
+    height: 45px;
+    width: 45px;
+  }
+
+  /* 画像の大きさ */
+  .btn p a img{
+    width:45px;
+    height: 45px;
+  }
+
+  /* おしらせ */
+  .importantInfo{
+    border-top:2px rgba(0, 0, 0, 0.3) solid; 
+    position: relative;
+  }
+  .importantInfo dl{
+    display: flex;
+    margin: 0;
+  }
+  .importantInfo dl dt{
+    background-color: #e17d7d;
+    width: 20%;
+    margin: 0 auto;
+  }
+  .importantInfo dl .info_importantInfo{
+    color: white;
+    display: block;
+    margin: 100% auto;
+    text-align: center;
+  }
+  .importantInfo dl dd{
+    background-color: #f0ede5;
+    width: 80%;
+    padding: 15px 0 0 15px;
+    margin: 0;
+  }
+  
+  .importantInfo dl ul{
+
+  }
+  .importantInfo dl ul li{
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  .importantInfo dl ul li .block{
+    margin-right: 10px;
+    width: 150px;
+  }
+  .importantInfo dl ul li .content{
+    text-decoration: underline;
+  }
+  
+  .purposePanel{
+    position: relative;
+  }
+  .purposePanel .row{
+    margin: 0;
+  }
+  .purposePanel ul{
+    display: flex;
+    margin: 0;
+  }
+  .purposePanel ul li{
+    width: 25%;
+    border-bottom: #e1e1e1 1px solid;
+    border-right: #e1e1e1 1px solid;
+  }
+  .purposePanel ul li a{
+    display: block;
+    padding: 20px 0 15px;
+    text-decoration: none;
+  }
+  .purposePanel ul li span {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    line-height: 1;
+    text-align: center;
+}
+  .purposePanel ul li a div {
+    margin: 0 13%;
+  }
+  .purposePanel ul li a div img{
+    height: 110px;
+    width: 160px;
+  }
+  .purposePanel ul li:first{
+    border-left: #e1e1e1 1px solid;
+  }
+
+  .centerBlockMenu{
+    position: relative;
+    border-bottom: 1px solid #cbcbcb;
+    background-color: #f7f8f8;
+    box-shadow: 0 1px 3px rgba(34, 23, 20, 0.2);
+    height: 75px;
+  }
+  .centerBlockMenu ul{
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+    
+  }
+  .centerBlockMenu ul li{
+    width: 100%;
+    height: 75px;
+    position: relative;
+  }
+  .centerBlockMenu ul li a{
+    display: block;
+    background-color: #031763;
+    text-align: center;
+    height: 100%;
+    padding: 25px 0;
+  }
+  .centerBlockMenu ul li #sinryo{
+    position: absolute;
+    top: 15px;
+    left: 10px;
+  }
+  .centerBlockMenu ul li #doctor{
+    position: absolute;
+    top: 15px;
+    left: 10px;
+  }
+  .centerBlockMenu ul li #map{
+    position: absolute;
+    top: 15px;
+    left: 10px;
+  }
+  .centerBlockArea .tabBaDragon{
+    margin: 0;
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+  }
+  .centerBlockArea .tabBaDragon li {
+    margin: 0;
+    padding: 0;
+    height: 75px;
+    width: 100%;
+  }
+  .centerBlockArea .tabBaDragon li a{
+    display: block;
+    margin: 0;
+    padding: 20px 0;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+  }
+
+  .tabBa dt {
+    display: none;
+  }
+  #tab1{
+    border-left: #e1e1e1 1px solid;
+    border-right: #e1e1e1 1px solid;
+
+  }
+  .listImgFeature {
+    background-color: #f0ede5;
+    padding-top: 56px;
+  }
+  .container{
+    padding: 0;
+    margin: 0!important;
+  }
+  .listImgFeature .row{
+    width: 100%;
+    padding: 10px;
+    margin: 0;
+  }
+  .listImgFeature .row li {
+    border: 1px gainsboro solid;
+    padding: 10px;
+    margin: 0;
+    height: 180px;
+  }
+  .listImgFeature .row li a{
+    padding: 0;
+    margin: 0;
+  }
+  .listImgFeature .row li a img{
+    height: auto;
+    width: 290px;
+  }
+  .listImgFeature .row li a span{
+    position: relative;
+    display: block;
+    top: -7px;
+    text-align: center;
+    padding: 5px 0;
+    width: 290px;
+    background-color: white;
+    color: #333;
+    text-decoration: none;
+  }
+
+  #footerInfoArea {
+    background-color: #fff;
+    box-shadow: none;
+  }
+  #footerInfoArea .content {
+    width: 480px;
+    padding: 20px 0;
+    margin: 0 auto;
+
+  }
+  #footerInfoArea .content .receptionInfo {
+    padding: 20px 20px 15px;
+    background-color: #f7f8f8;
+    border: 1px solid #dbdbdb;
+  }
+
+  #footerInfoArea .content .receptionInfo .timeInfo{
+    display: flex;
+    padding-top:10px;
+    margin-top: 10px;
+    border-top:1px solid #dbdbdb;
+  }
+  #footerInfoArea .content .receptionInfo .timeInfo:first-child {
+    padding-top: 0;
+    margin-top: 0px;
+    border-top: none;
+    
+  }
+  #footerInfoArea .content .receptionInfo .timeInfo dt{
+    width: 25%;
+  }
+  #footerInfoArea .content .receptionInfo .timeInfo dd{
+    width: 75%;
+  }
+  #footerInfoArea .content .receptionInfo .reserve{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+  }
+  #footerInfoArea .content .receptionInfo .reserve .btnBa{
+    background-color: #005;
+    width: 200px;
+    height: 50px; 
+  }
+  #footerInfoArea .content .receptionInfo .reserve .btnBa a{
+    padding-top: 12px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+  }
+
+  .accessInfo{
+    position: relative;
+    margin: 10px auto;
+    height: 250px;
+  }
+
+  .aboutAccess {
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    text-align: center;
+    opacity: 0.9;
+    border-radius: 50px;
+    background-color: #383838;
+    font-weight: bold;
+    position: relative;
+    z-index: 99;
+    padding-top:25px; 
+    top: -180px;
+    left: 50px;
+  }
+  .accessInfo .doubleDragon{
+    position: relative;
+    top: -290px;
+    left: 250px;
+    display: flex;
+    flex-direction: column;
+  }
+  .accessInfo .doubleDragon li{
+    display: inline-block;
+    background-color: #ff9f1a;
+    text-align: center;
+    padding: 12px 0;
+    height: 50px;
+    width: 200px;
+  }
+  .accessInfo .doubleDragon .first{
+    margin-top: 20px;
+  }
+  .accessInfo .doubleDragon li a{
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+  }
+
+  #footerBnrAreaWrap{
+    /* background-color: #000055; */
+    position: relative;
+  }
+  #footerBnrAreaWrap .bnrCarousel{
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    background: #77777712;
+  }
+  #footerBnrAreaWrap .bnrCarousel .inner .bnrCarousel{
+    display: flex;
+    justify-content: space-around;
+  }
+   .fbtn{
+     position: relative;
+     top:10px;
+   }
+  #imgcenter ul{
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    width: 110%;
+    top:10px;
+    left: -30px;
+  }
+  #imgcenter ul li{
+    height: 50px;
+    width: 200px;
+    border: #333 1px solid;
+
+  }
+  #imgcenter ul li a {
+    height: 100%;
+    width: 100%;
+    display: block!important;
+  }
+  #imgcenter ul li a img{
+    height: 100%;
+    width: 100%;
+  }
+  #footer{
+    background-color: #000055;
+  }
+  #footerContent{
+  }
+  #footerContent .utility{ 
+  }
+  #footerContent .utility li { 
+    margin-right:10px;
+    padding-right:10px; 
+    border-right: 1px white solid; 
+  }
+  #footerContent .utility li:last-child { 
+    border-right: none; 
+  }
+  #footerContent .utility li a{ 
+    color: white;
+  }
+  #footerCopy{
+    position: relative;
+    color:white;
+    font-size: 12px;
+    float: right;
+    top:-27px;
+   }
+  
+
+}
+
+
+@media screen and ( min-width:1024px) {
+  /* 1024px以上の画面サイズにCSSを適応  */
+
+  /* 画像の大きさ */
+  .header_center{
+    height: auto;
+    width: 300px;
+  }
+  .header_center img {
+     width: 100%; 
+  }
+  /* right */
+  #header #headerContent .right {
+    float: right;
+    margin-right: 60px;
+  }
+  /* left */
+  #header #headerContent .left {
+    float: left;
+    margin-left: 50px;
+  }
+  .utility li a ,#utilityBtn li a{
+    text-decoration: underline;
+    color: #777;
+    font-size: 14px;
+  }
+
+  /* nav */
+  #globalNav {
+    position: relative;
+    top:120px;
+    background-color: #000055;
+    width: 100%;
+    color:white;
+  }
+  #globalNav .wrap{
+    height:  50px;
+  }
+  #globalNav .wrap ul{
+    margin: 0px;
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content:space-around; 
+  }
+  #globalNav .wrap ul li {
+    text-align: center;
+    width: 100%;
+  }
+  #globalNav .wrap ul li a {
+    display: block;
+    color: #fff;
+    width: 100%;
+    padding-top: 10px;
+  }
+  /* 縦線 */
+  #about{
+    border-left: #fff 1px solid;
+    border-right: #fff 1px solid;
+  }
+
+  .prev_next_btn{
+    top: 14%;
+  }
+
+
+  
+}
+
+#headerMenu {
+  transition: transform 0.3s;
+}
+#headerMenuClose {
+  transition: transform 0.3s;
+}
+body{
+  transition: transform 0.3s; 
+  transform: translateX(0px);
+  word-wrap: break-word;
+}
+
+
+

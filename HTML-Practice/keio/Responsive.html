@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- アイコンの設定 -->
+  <link rel="shortcut icon" href="img/youtube.ico">
+  <!-- bootstrapの設定 -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <!-- cssの設定 -->
+  <link rel="stylesheet" href="css/Responsive.css">
+
+  <title>Responsive</title>
+</head>
+<body style="">
+  <header>
+    <div id="header">
+        <div id="headerContent">
+            <div class="header_center" style=""><img id="logo" src="img/logo.png" alt="イメージ"></div>
+            <div id="headerMenu" style="">
+              <h2>メニュー
+                <a id="headerMenuClose" href="#"><img class="close" src="img/close.png" style="" alt="閉じる">
+                </a>
+              </h2>
+              <div class="left">
+                <div id="headerSearch">
+                  <form action="/search/" method="get">
+                    <input type="hidden" name="imgsize" value="0">
+                    <input id="headerSearchText" type="text" placeholder="サイト内検索" title="サイト内検索" name="q">
+                    <input type="image" src="img/search.png" alt="検索">
+                  </form>
+                </div><!-- headerSearch -->
+                <ul class="utility">
+                  <li class="li1"><a href="">ホーム</a></li>
+                  <li class="li2"><a href="">お問い合わせ一覧</a></li>
+                  <li class="li3"><a href="">アクセス</a></li>
+                </ul><!-- utility -->
+              </div><!-- left -->
+              
+              <div class="right">
+                <ul class="utility">
+                  <li class="li1"><a href="/sitemap.html">サイトマップ</a></li>
+                  <li class="li2"><a href="/en/">ENGLISH</a></li>
+                  <li class="li3"><a href="/iryo/saiyo/">採用情報</a></li>
+                </ul><!-- utility -->
+                
+                <div id="utilityBtn">
+                  <dl>
+                    <dt class="size">文字<br>サイズ</dt>
+                    <dd>
+                      <ul>
+                        <li><a id="zoomFontBtn" href="#">拡大</a></li>
+                        <li><a id="returnFontBtn" href="#">標準</a></li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt class="change">背景変更</dt>
+                      <dd>
+                        <ul>
+                        <li><a id="changeBackGroundBtn" href="#">黒</a></li>
+                      </ul>
+                    </dd>
+                  </dl>
+                </div>
+                <!-- utilityBtn -->
+              </div>
+              <!-- right -->
+          </div>
+        </div>
+        <!-- headerMenu -->
+        <div id="open_btn" class="">
+            <button class="btn" type="button">
+              <span class="top"></span>
+              <span class="mid"></span>
+              <span class="btm"></span>
+            </button>
+        </div>
+    </div>
+    <!-- nav -->
+    <div id="globalNav" role="navigation" class="">
+        <div class="wrap">
+          <ul>
+            <!-- 来院・入院の方 -->
+            <li class=""><a href=""><div class="inner">来院・入院の方</div></a>
+            </li>
+            <!-- 慶應義塾大学病院について -->
+            <li id="about" class=""><a href=""><div class="inner">慶應義塾大学病院について</div></a>
+            </li>
+            <!-- 医療関係の方 -->
+            <li class=""><a href=""><div class="inner">医療関係の方</div></a>
+            </li>
+          </ul>
+        </div><!--wrap-->
+      </div>
+  </header>
+  <!-- main -->
+  <div id="topPage">
+    <div class="inner" style="">
+      <ul id="pcimgList" style="">
+        <li class="" style="">
+          <a href="" tabindex=""><img class="pcimg" src="img/jp-pc.png" alt=""></a>
+        </li>
+      </ul><!--pcimgList-->
+      <div class="prev_next_btn">
+        <p class="prev">
+          <a class="" href="#">
+            <img src="img/btn_prev.png" alt="前の画像へ戻る">
+          </a>
+        </p>
+        <p class="next">
+          <a class="" href="#">
+            <img src="img/btn_next.png" alt="次の画像へ進む">
+          </a>
+        </p>
+      </div><!--btn-->
+    </div><!--inner-->
+  </div>
+  <!-- お知らせ -->
+  <div class="importantInfo">
+    <dl>
+      <dt id="info"><span class="info_importantInfo">大切なお知らせ</span></dt>
+      <dd>
+        <ul class="listNewsBa iconNone">
+          <li>
+            <div class="block"><span class="date">20XX年XX月XX日</span></div>
+            <div class="content"><a href="" target="_blank">テストtestテストtestテストtestテストtest
+              <img class="icon window" src="" alt="別ウインドウで開きます。"></a>
+            </div>
+          </li>
+          <li>
+            <div class="block"><span class="date">20XX年XX月XX日</span></div>
+            <div class="content"><a href="" target="_blank">テストtestテストtestテストtestテストtest
+              <img class="icon window" src="" alt="別ウインドウで開きます。"></a>
+            </div>
+          </li>
+          <li>
+            <div class="block"><span class="date">20XX年XX月XX日</span></div>
+            <div class="content"><a href="" target="_blank">テストtestテストtestテストtestテストtest
+              <img class="icon window" src="" alt="別ウインドウで開きます。"></a>
+            </div>
+          </li>
+          <li>
+            <div class="block"><span class="date">20XX年XX月XX日</span></div>
+            <div class="content"><a href="" target="_blank">テストtestテストtestテストtestテストtest
+              <img class="icon window" src="" alt="別ウインドウで開きます。"></a>
+            </div>
+          </li>
+          <li>
+            <div class="block"><span class="date">20XX年XX月XX日</span></div>
+            <div class="content"><a href="" target="_blank">テストtestテストtestテストtestテストtest
+              <img class="icon window" src="" alt="別ウインドウで開きます。"></a>
+            </div>
+          </li>
+          <li>
+            <div class="block"><span class="date">20XX年XX月XX日</span></div>
+            <div class="content"><a href="" target="_blank">テストtestテストtestテストtestテストtest
+              <img class="icon window" src="" alt="別ウインドウで開きます。"></a>
+            </div>
+          </li>
+          <li>
+            <div class="block"><span class="date">20XX年XX月XX日</span></div>
+            <div class="content"><a href="" target="_blank">テストtestテストtestテストtestテストtest
+              <img class="icon window" src="" alt="別ウインドウで開きます。"></a>
+            </div>
+          </li>
+          <li>
+            <div class="block"><span class="date">20XX年XX月XX日</span></div>
+            <div class="content"><a href="" target="_blank">テストtestテストtestテストtestテストtest
+              <img class="icon window" src="" alt="別ウインドウで開きます。"></a>
+            </div>
+          </li>
+        </ul>
+      </dd>
+    </dl>
+  </div>
+  <!-- 選択 -->
+  <div class="purposePanel">
+    <ul class="row">
+      <li class="">
+        <a href=""><span class="text" style="">初めて受診する方</span>
+          <div>
+            <img src="img/img_purpose1.png" alt="">
+          </div>
+        </a>
+      </li>
+      <li class="">
+        <a href=""><span class="text" style="">通院・再来の方</span>
+          <div>
+            <img src="img/img_purpose2.png" alt="">
+          </div>
+        </a>
+      </li>
+      <li class="">
+        <a href=""><span class="text" style="">入院・面会の方</span>
+          <div>
+            <img src="img/img_purpose3.png" alt="">
+          </div>
+        </a>
+      </li>
+      <li class="">
+        <a href=""><span class="text" style="">人間ドック</span>
+          <div>
+            <img src="img/img_purpose4.png" alt="">
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="centerBlockMenu">
+    <ul>
+      <li>
+        <img src="img/close.png" alt="" id="sinryo">
+        <a class="sinryo" href="">診療科・部門一覧</a>
+      </li>
+      <li>
+        <img src="img/btn_next.png" alt="" id="doctor">
+        <a class="doctor" href="">医師・病名検索</a>
+      </li>
+      <li>
+        <img src="img/btn_prev.png" alt="" id="map">
+        <a class="map" href="">地図・フロア図</a>
+      </li>
+    </ul>
+  </div>
+  
+  <div class="centerBlockArea">
+      <ul class="tabBaDragon" role="tablist">
+        <li class="">
+          <a href="" role="tab" aria-controls="tab0" aria-selected="false">病院からのお知らせ</a>
+        </li>
+        <li id="tab1">
+          <a href="" role="tab" aria-controls="tab1" aria-selected="false">医療関係の方へのお知らせ</a>
+        </li>
+        <li class="">
+          <a href="" role="tab" aria-controls="tab2" aria-selected="false">採用情報</a>
+        </li>
+      </ul>
+      <dl class="tabBa">
+        <!-- ===病院からのお知らせ=== -->
+        <dt class="info1">
+          <a href="" class="info info1">病院からのお知らせ</a>
+        </dt>
+        <dd id="info_list1" class="content" role="tabpanel" aria-labelledby="tab0" style="">
+          <ul class="listNewsBa">
+            <li>
+              <div class="block">
+                <span class="date">20XX年XX月XX日</span>
+                <span class="icon info">お知らせ</span>
+              </div>
+              <div class="content">
+                <a href="">test</a>
+              </div>
+            </li>
+          </ul><!--listNewsBa-->
+          <p class="linkBa tRight">
+            <a href="" >病院からのお知らせ一覧</a>
+          </p>
+        </dd><!--content-->
+          <!-- ===医療関係の方へのお知らせ=== -->
+        <dt class="info2">
+          <a href="" class="info info2">医療関係の方へのお知らせ</a>
+        </dt>
+        <dd id="info_list2" class="content" role="tabpanel" aria-labelledby="tab0" style="display: none">
+            <ul class="listNewsBa">
+              <li>
+                <div class="block">
+                  <span class="date">20XX年XX月XX日</span>
+                  <span class="icon info">お知らせ</span>
+                </div>
+                <div class="content"><a href="">test</a>
+                </div>
+              </li>
+            </ul><!--listNewsBa-->
+            <p class="linkBa tRight">
+              <a href="">病院からのお知らせ一覧2</a>
+            </p>
+          </dd><!--content-->
+        <!-- ===更新履歴=== -->
+        <dt class="info3">
+          <a href="" class="info info3">採用情報</a>
+        </dt>
+        <dd id="info_list3" class="content" role="tabpanel" aria-labelledby="tab0" style="display: none">
+            <ul class="listNewsBa">
+              <li>
+                <div class="block">
+                  <span class="date">20XX年XX月XX日</span>
+                  <span class="icon info">お知らせ</span>
+                </div>
+                <div class="content"><a href="">test</a>
+                </div>
+              </li>
+            </ul><!--listNewsBa-->
+            <p class="linkBa tRight">
+              <a href="">病院からのお知らせ一覧3</a>
+            </p>
+          </dd><!--content-->    
+      </dl><!--tabBa-->
+  </div>
+
+  <div class="listImgFeature">
+    <ul class="row">
+      <li class="col-6 col-md-4">
+        <a href="">
+          <img src="img/img_feature.jpg" alt="">
+          <span style="">情報公開について</span>
+        </a>
+      </li>
+      <li class="col-6 col-md-4">
+        <a href="">
+          <img src="img/img_feature.jpg" alt="">
+          <span style="">情報公開について</span>
+        </a>
+      </li>
+      <li class="col-6 col-md-4">
+        <a href="">
+          <img src="img/img_feature.jpg" alt="">
+          <span style="">情報公開について</span>
+        </a>
+      </li>
+      <li class="col-6 col-md-4">
+        <a href="">
+          <img src="img/img_feature.jpg" alt="">
+          <span style="">情報公開について</span>
+        </a>
+      </li>
+      <li class="col-6 col-md-4">
+        <a href="">
+          <img src="img/img_feature.jpg" alt="">
+          <span style="">情報公開について</span>
+        </a>
+      </li>
+      <li class="col-6 col-md-4">
+        <a href="">
+          <img src="img/img_feature.jpg" alt="">
+          <span style="">情報公開について</span>
+        </a>
+      </li>
+      <li class="col-6 col-md-4">
+        <a href="">
+          <img src="img/img_feature.jpg" alt="">
+          <span style="">情報公開について</span>
+        </a>
+      </li>
+      <li class="col-6 col-md-4">
+        <a href="">
+          <img src="img/img_feature.jpg" alt="">
+          <span style="">情報公開について</span>
+        </a>
+      </li>
+      <li class="col-6 col-md-4">
+        <a href="">
+          <img src="img/img_feature.jpg" alt="">
+          <span style="">情報公開について</span>
+        </a>
+      </li>
+
+
+    </ul>
+  </div>
+
+  <div id="footerInfoArea">
+    <div class="content">
+      <div class="receptionInfo">
+        <div class="timeInfoWrap">
+          <dl class="timeInfo">
+            <dt class="addressTel">住所・電話</dt>
+            <dd>〒160-XXXX　東京都新宿区信濃町XX<br>XX-XXXX-XXXX（代表）</dd>
+          </dl><!--timeInfo-->
+          <dl class="timeInfo">
+            <dt class="sinryoReception">診療受付</dt>
+            <dd>午前X時XX分～午前XX時XX分</dd>
+          </dl><!--timeInfo-->
+            
+          <dl class="timeInfo">
+            <dt class="sinryoStopDay">休診日</dt>
+            <dd>日曜日・第1・3土曜日<br>国民の祝日・休日<br>年末年始（12/30～1/4）<br>慶應義塾の休日（1/10、4/23）</dd>
+          </dl><!--timeInfo-->
+        </div><!--timeInfoWrap-->
+        <ul class="reserve">
+          <li class="btnBa">
+            <a href="">予約について</a>
+          </li>
+          <li class="btnBa">
+            <a href="">予約変更・確認</a>
+          </li>
+        </ul>
+      </div><!--receptionInfo-->
+      
+      <div class="accessInfo">
+        <div>
+          <img class="map" src="img/map.png" alt="">
+        </div>
+        <a class="aboutAccess" href="">
+            <span>アクセスに<br class="spNone">ついて</span>
+        </a>
+        <ul class="btnBa doubleDragon">
+          <li class="second">
+            <a href="">フロアマップ</a>
+          </li>
+          <li class="first">
+            <a href="">院内施設一覧</a>
+          </li>
+        </ul>
+      </div><!--accessInfo-->
+    </div><!--content-->
+  </div>
+
+  <div id="footerBnrAreaWrap">
+    <div class="bnrCarousel">
+      <p class="btn_prev fbtn">
+          <a class="prev" href="#">
+            <img src="img/btn_prev.png" alt="前の画像へ戻る">
+          </a>
+      </p>
+      <div id="imgcenter" class="inner " style="">
+        <ul style="" class="">
+          <li>
+            <a id="img_center" class="img_center" href="" target="_blank" tabindex="-1" >
+              <img src="img/logo.png" alt="慶應義塾">
+            </a>
+          </li>
+          <li>
+            <a id="" class="img_center" href="" target="_blank" tabindex="-1" style="display: none;">
+              <img src="img/logo.png" alt="慶應義塾">
+            </a>
+          </li>
+          <li>
+            <a id="" class="img_center" href="" target="_blank" tabindex="-1"
+            style="display: none;">
+              <img src="img/logo.png" alt="慶應義塾">
+            </a>
+          </li>
+        </ul>
+      </div><!--inner-->
+      <p class="btn_next fbtn">
+        <a class="next" href="#">
+          <img src="img/btn_next.png" alt="次の画像へ進む">
+        </a>
+      </p>
+    </div><!--bnrCarousel-->
+  </div>
+  <!-- footer -->
+  <div id="footer">
+    <div id="footerContent">
+      <ul class="utility">
+        <li><a href="">このサイトについて</a></li>
+        <li><a href="">プライバシーポリシー</a></li>
+        <li><a href="">お問い合わせ一覧</a></li>
+        <li><a href="" target="_blank">ご寄付のお願い</a></li>
+        </ul>
+      <div id="footerCopy">Copyright (C） Keio University All Rights Reserved.</div>
+    </div><!-- footerContent -->
+  </div>
+    <!-- jQueryの設定 -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  <script src="js/jQuery/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="js/jQuery/jquery.js"></script>
+  <script type="text/javascript" src="js/JavaScript/js.js"></script>
+
+</body>
+</html>

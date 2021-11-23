@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)http://127.0.0.1:5500/Responsive.html# -->
+<html lang="en"><script type="text/javascript">window["_gaUserPrefs"] = { ioo : function() { return true; } }</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- cssの設定 -->
+  
+  <!-- アイコンの設定 -->
+  
+  <!-- bootstrapの設定 -->
+  
+  <title>Responsive</title>
+<link rel="stylesheet" href="./Responsive_files/Responsive.css"><link rel="shortcut icon" href="http://127.0.0.1:5500/img/youtube.ico"><link rel="stylesheet" href="./Responsive_files/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous"></head>
+<body>
+  <header>
+    <div id="header_after"></div>
+    <div id="header">
+        <div id="headerContent">
+            <div class="header_center" style=""><img src="./Responsive_files/logo.png" alt="イメージ"></div>
+            <div id="headerMenu">
+              <h2>メニュー<a id="headerMenuClose" href="http://127.0.0.1:5500/Responsive.html#"><img class="close" src="./Responsive_files/close.png" alt="閉じる"></a></h2>
+              <div class="left">
+                <div id="headerSearch">
+                  <form action="http://127.0.0.1:5500/search/" method="get">
+                    <input type="hidden" name="imgsize" value="0">
+                    <input id="headerSearchText" type="text" placeholder="サイト内検索" title="サイト内検索" name="q">
+                    <input type="image" src="./Responsive_files/search.png" alt="検索">
+                  </form>
+                </div><!-- headerSearch -->
+                <ul class="utility">
+                  <li class="li1"><a href="http://127.0.0.1:5500/Responsive.html">ホーム</a></li>
+                  <li class="li2"><a href="http://127.0.0.1:5500/Responsive.html">お問い合わせ一覧</a></li>
+                  <li class="li3"><a href="http://127.0.0.1:5500/Responsive.html">アクセス</a></li>
+                </ul><!-- utility -->
+              </div><!-- left -->
+              
+              <div class="right">
+                <ul class="utility">
+                  <li class="li1"><a href="http://127.0.0.1:5500/sitemap.html">サイトマップ</a></li>
+                  <li class="li2"><a href="http://127.0.0.1:5500/en/">ENGLISH</a></li>
+                  <li class="li3"><a href="http://127.0.0.1:5500/iryo/saiyo/">採用情報</a></li>
+                </ul><!-- utility -->
+                
+                <div id="utilityBtn">
+                  <dl>
+                    <dt class="size">文字<br>サイズ</dt>
+                    <dd>
+                      <ul>
+                        <li><a id="zoomFontBtn" href="http://127.0.0.1:5500/Responsive.html#">拡大</a></li>
+                        <li><a id="returnFontBtn" href="http://127.0.0.1:5500/Responsive.html#">標準</a></li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt class="change">背景変更</dt>
+                      <dd>
+                        <ul>
+                        <li><a id="changeBackGroundBtn" href="http://127.0.0.1:5500/Responsive.html#">黒</a></li>
+                      </ul>
+                    </dd>
+                  </dl>
+                </div>
+                <!-- utilityBtn -->
+              </div>
+              <!-- right -->
+          </div>
+        </div>
+        <!-- headerMenu -->
+        <div id="open_btn" class="">
+            <button class="btn" type="button">
+              <span class="top"></span>
+              <span class="mid"></span>
+              <span class="btm"></span>
+            </button>
+        </div>
+    </div>
+  </header>
+  
+    <!-- jQueryの設定 -->
+  <script src="./Responsive_files/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="./Responsive_files/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="./Responsive_files/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  <script src="./Responsive_files/jquery-3.4.1.min.js"></script>
+  <!-- <script type="text/javascript" src="js/jQuery/jquery.js"></script> -->
+  <!-- <script type="text/javascript" src="js/JavaScript/js.js"></script> -->
+
+<!-- Code injected by live-server -->
+<script type="text/javascript">
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+</body></html>

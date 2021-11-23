@@ -1,0 +1,32 @@
+/*{
+レスポンシブの基本系メモ
+common系は分けておいた方が良い。
+基本的には画面サイズがあがっていくに連れてCSSを書き加えていくほうが良い。
+CSShaあとから読み込んだものが上書きされて行く。
+よって画面サイズが小さいときに非表示、大きくなった場合に表示したい場合には、
+再度指定してやる必要がある
+
+
+} */
+
+/* common */
+body{
+  margin: 0px;
+  padding: 0px;
+}
+
+
+@media screen and (min-width: 480px){
+   /* 480px以上の画面サイズにCSSを適応  */
+
+}
+
+@media screen and (min-width: 720px){
+   /* 720px以上の画面サイズにCSSを適応  */
+ 
+}
+
+@media screen and ( max-width:1024px) {
+   /* 1024px以上の画面サイズにCSSを適応  */
+
+}

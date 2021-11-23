@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- cssの設定 -->
+  <link rel="stylesheet" href="css/Responsive.css">
+  <!-- アイコンの設定 -->
+  <link rel="shortcut icon" href="img/youtube.ico">
+  <!-- bootstrapの設定 -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <title>test</title>
+</head>
+<body>
+ 
+<div id="test" class="test">
+    <div id="header">
+        <div id="headerContent">
+            <div class="header_center" style=""><img id="logo" src="img/logo.png" alt="イメージ"></div>
+            <div id="headerMenu" style="display: none">
+              <h2>メニュー<a id="headerMenuClose" href="#"><img class="close" src="img/close.png" style="" alt="閉じる"></a></h2>
+              <div class="left">
+                <div id="headerSearch">
+                  <form action="/search/" method="get">
+                    <input type="hidden" name="imgsize" value="0">
+                    <input id="headerSearchText" type="text" placeholder="サイト内検索" title="サイト内検索" name="q">
+                    <input type="image" src="img/search.png" alt="検索">
+                  </form>
+                </div><!-- headerSearch -->
+                <ul class="utility">
+                  <li class="li1"><a href="">ホーム</a></li>
+                  <li class="li2"><a href="">お問い合わせ一覧</a></li>
+                  <li class="li3"><a href="">アクセス</a></li>
+                </ul><!-- utility -->
+              </div><!-- left -->
+              
+              <div class="right">
+                <ul class="utility">
+                  <li class="li1"><a href="/sitemap.html">サイトマップ</a></li>
+                  <li class="li2"><a href="/en/">ENGLISH</a></li>
+                  <li class="li3"><a href="/iryo/saiyo/">採用情報</a></li>
+                </ul><!-- utility -->
+                
+                <div id="utilityBtn">
+                  <dl>
+                    <dt class="size">文字<br>サイズ</dt>
+                    <dd>
+                      <ul>
+                        <li><a id="zoomFontBtn" href="#">拡大</a></li>
+                        <li><a id="returnFontBtn" href="#">標準</a></li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt class="change">背景変更</dt>
+                      <dd>
+                        <ul>
+                        <li><a id="changeBackGroundBtn" href="#">黒</a></li>
+                      </ul>
+                    </dd>
+                  </dl>
+                </div>
+                <!-- utilityBtn -->
+              </div>
+              <!-- right -->
+          </div>
+        </div>  
+</div>
+
+    <!-- jQueryの設定 -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  <script src="js/jQuery/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="js/jQuery/jquery.js"></script>
+  <script type="text/javascript" src="js/JavaScript/js.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <title>Hello, world!</title>
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <!-- CSS　自作 -->
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        .box-container {
+          width: 100px;
+          height: 100px;
+          background: #ddd;
+          margin-bottom: 5px;
+        }
+      </style>
+</head>
+  <body>
+    <!-- <h2 class="font-weight-normal text-warning display-5">こんにちは！</h2>
+    <div class="text-center bg-primary">BOX</div>
+    <div class="text-center bg-success text-warning">BOX</div>
+    <div class="text-center bg-info font-weight-bold">BOX</div>
+    <div class="text-center bg-dark text-light">BOX</div> -->
+
+    <!-- 要素のサイズ -->
+  <!-- <div class="box-container">
+    <div class="bg-primary w-25 h-25 pt-1">BOX</div>
+  </div>
+  <div class="box-container">
+    <div class="bg-success w-75 h-75 my- mx-auto">BOX</div>
+  </div>
+  <div class="box-container">
+    <div class="bg-info w-100 h-50">BOX</div>
+  </div> -->
+
+  <!-- ボタン作成 -->
+  <!-- <button class="btn btn-lg btn-success">OK
+  </button> -->
+
+  <!-- 
+    グリッドレイアウト 12分割の割合
+    col-Xで割合をしてしてやる。
+    指定しない場合、均等になるように配置してくれる。
+    12を越える場合には、開業されて表示される
+    足りない場合な空白になる
+  -->
+  <!-- <div class="container">
+    <div class="row">
+      <div class="col btn-danger">1</div>
+      <div class="col btn-primary">2</div>
+      <div class="col btn-warning">3</div>
+
+    </div>
+    <div class="row">
+      <div class="col-4 btn-success">1</div>
+      <div class="col-6 btn-dark">2</div>
+      <div class="col-2 btn-info">3</div>
+    </div>
+    <div class="row">
+      <div class="col-1 btn-danger">1</div>
+      <div class="col-1 btn-primary">2</div>
+      <div class="col-2 btn-warning">3</div>
+    </div>
+    <div class="row">
+      <div class="col-10 btn-success">1</div>
+      <div class="col-10 btn-dark">2</div>
+      <div class="col btn-info">3</div>
+    </div>
+  </div> -->
+
+  <!-- レスポンシブ対応 -->
+  <!-- 
+  576px :sm
+  768px md
+  992px :lg
+  1200px :xlg 
+-->
+<!--
+col-sm-2 : 基本は指定なし状態 sm以上で比率を２にするやり方 
+d-sm-none: sm以上で非表示
+
+-->
+  <div class="container">
+      <div class="row">
+        <div class="col-10 btn-danger">1</div>
+        <div class="col-2 btn-primary">2</div>
+      </div>
+      <div class="row">
+        <div class="col-10 col-sm-2 btn-danger">1</div>
+        <div class="col-2  col-sm-10 btn-primary">2</div>
+      </div>
+      <div class="row">
+        <div class="col-10 col-sm-2 btn-danger">1</div>
+        <div class="col-2  d-sm-none btn-primary">2</div>
+        <div class="d-none d-sm-block col-sm-12 btn-primary h-75">2</div>
+      </div>
+  </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  </body>
+</html>
