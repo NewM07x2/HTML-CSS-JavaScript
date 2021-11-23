@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+
+<body>
+    <div class="frame">
+        <h1 class="frame__title">JavaScript</h1>
+
+        <div class="frame__inner">
+            <div id="timer"></div>
+            <button id="stop">STOP</button>
+            <!-- ここに、JavaScriptを記述します -->
+            <script>
+                // timerといった関数を指定
+                let timer = () => {
+                    let now = new Date();
+                    document.getElementById('timer').innerHTML =
+                        `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
+                }
+                // setInterval：500ms間にtimerを繰り返し行っていく
+                let timerID = setInterval(timer, 100);
+                const stop = document.getElementById('stop');
+                stop.addEventListener('click', () => {
+                    clearInterval(timerID);
+                    stop.style.background = '#999';
+                });
+
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>

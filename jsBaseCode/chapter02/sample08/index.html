@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+
+<body>
+    <div class="frame">
+        <h1 class="frame__title">JavaScript</h1>
+
+        <div class="frame__inner">
+            <div id="time" class="times">10:23:45</div>
+            <!-- ここに、JavaScriptを記述します -->
+            <script>
+                let display = document.getElementById('time');
+                // alert(display); 
+                display.innerHTML = '10時 23分 46秒';
+                display.classList.remove('times');
+                display.classList.add('クラスを付与します');
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>

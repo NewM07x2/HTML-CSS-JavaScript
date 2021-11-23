@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+
+<body>
+    <div class="frame">
+        <h1 class="frame__title">JavaScript</h1>
+
+        <div class="frame__inner">
+            <p>メールアドレス： <input type="email" name="email" id="">
+                <span style="color: #f33"></span>
+            </p>
+            <!-- ここに、JavaScriptを記述します -->
+            <script>
+                // querySelector： CSSの記載方法のように要素を取得する(カッコの中が「#id」「.class」などで指定できる。)
+                // blur：フォカスを外した時
+                // focus：フォーカスした時
+                // style：cssの変更
+                // nextElementSibling：次の要素を取得する
+                const email = document.querySelector('input[name="email"]')
+                email.addEventListener('focus', () => {
+                    email.style.backgroundColor = '#fcc';
+                    email.nextElementSibling.innerHTML = '※ メールアドレスを記入しろよ！';
+                });
+
+                email.addEventListener('blur', () => {
+                    if (email.value === '')
+                    {
+                        email.style.backgroundColor = '#fcc';
+                        email.nextElementSibling.innerHTML = '※入力しろって言ったじゃん'; //spanタグを指定して値を表示している
+                    } else
+                    {
+                        email.style.backgroundColor = '#fff';
+                        email.nextElementSibling.innerHTML = '';
+                    }
+                });
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>

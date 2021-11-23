@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+
+<body>
+    <div class="frame">
+        <h1 class="frame__title">JavaScript</h1>
+
+        <div class="frame__inner">
+            <!-- ここに、JavaScriptを記述します -->
+            <script>
+                // 定数 todayを宣言
+                const today = new Date();
+
+                // 現在の秒数を表示する
+                document.write(today.getSeconds());
+            </script>
+            <script>
+                // constは定数なので代入の書き方ができない。
+                const today2 = new Date();
+                let year = today2.getFullYear(); // 2020
+                let month = today2.getMonth() + 1; // 6
+                let day = today2.getDate(); // 10
+                let hours = today2.getHours();
+                let minutes = today2.getMinutes();
+                let seconds = today2.getSeconds();
+
+                document.write(year + '年' + month + '月' + day + '日 ' + hours + '時' + minutes + '分' + seconds + '秒');
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>

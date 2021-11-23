@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <link rel="stylesheet" href="../assets/style.css">
+    <style>
+        /* 最中の状態 */
+        .v-enter-active {
+            transition: opacity 2s;
+        }
+
+        /* 開始の状態 */
+        .v-enter {
+            opacity: 0;
+            /* color: blue; */
+        }
+
+        /* 終了後の状態 */
+        .v-enter-to {
+            opacity: 1;
+            color: red;
+        }
+
+        .test {
+            color: red;
+        }
+
+
+        .v-leave {
+            transition: opacity 3s;
+        }
+
+        .v-leave-active {
+            opacity: 1;
+        }
+
+        .v-leave-to {
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="frame">
+        <h1 class="frame__title">フェードインしながら表示させよう</h1>
+
+        <div class="frame__inner">
+            <div id="app">
+                <transition appear>
+                    <div v-html="message" class="test"></div>
+                </transition>
+                <transition>
+                    <div v-html="message"></div>
+                </transition>
+            </div>
+            <!-- ここに、JavaScriptを記述します -->
+            <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+            <script>
+                var app = new Vue({
+                    el: "#app",
+                    data: {
+                        message: "Vue.jsを勉強しています"
+                    }
+                });
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>
